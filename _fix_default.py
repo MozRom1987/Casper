@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+content = '''<!DOCTYPE html>
 <html lang="{{@site.locale}}">
 
 <head>
@@ -12,13 +14,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{!-- Groovy CSS --}}
-    <link rel="stylesheet" type="text/css" href='{{asset "css/plugins.min.css"}}' />
-    <link rel="stylesheet" type="text/css" href='{{asset "css/screen.css"}}' />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/plugins.min.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
 
     {{!-- Google Fonts: Jost + Outfit --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
 
     {{!-- Tag & category colors --}}
     <style>
@@ -48,11 +52,11 @@
     </style>
 
     <script>
-        var site_url = '{{@site.url}}';
+        var site_url = \'{{@site.url}}\';
         var theme_config = {
-            masonry: 'on',
-            sticky_sidebar: 'on',
-            disqus_shortname: ''
+            masonry: \'on\',
+            sticky_sidebar: \'on\',
+            disqus_shortname: \'\'
         };
     </script>
 
@@ -89,8 +93,12 @@
         <header id="header" class="enable-sticky">
 
             <div class="menu-mobile">
-                <svg class="icon ularge open"><use xlink:href="#menu-icon"></use></svg>
-                <svg class="icon ularge close"><use xlink:href="#close-icon"></use></svg>
+                <svg class="icon ularge open">
+                    <use xlink:href="#menu-icon"></use>
+                </svg>
+                <svg class="icon ularge close">
+                    <use xlink:href="#close-icon"></use>
+                </svg>
             </div>
 
             <div class="menu-wrapper">
@@ -107,12 +115,14 @@
                             </a>
                         </div>
 
-                        {{!-- Search --}}
+                        {{!-- Search button --}}
                         <a href="javascript:void(0)" data-ghost-search class="epcl-search-button button circle dark">
-                            <svg class="icon"><use xlink:href="#search-icon"></use></svg>
+                            <svg class="icon">
+                                <use xlink:href="#search-icon"></use>
+                            </svg>
                         </a>
 
-                        {{!-- Desktop nav --}}
+                        {{!-- Desktop navigation --}}
                         <nav class="main-nav">
                             <ul class="menu">
                                 {{#foreach @site.navigation}}
@@ -120,7 +130,7 @@
                                 {{/foreach}}
                                 <li class="nav-login">
                                     {{#unless @member}}
-                                    <a href="#/portal/signup" class="login epcl-button dark">Sign Up</a>
+                                    <a href="#/portal/signup" class="login epcl-button dark" data-title="Sign Up">Sign Up</a>
                                     {{else}}
                                     <a href="#/portal/account" class="login epcl-button dark">Account</a>
                                     {{/unless}}
@@ -145,6 +155,7 @@
             <div class="clear"></div>
         </header>
 
+        {{!-- Body content injected here --}}
         {{{body}}}
 
         {{!-- Footer --}}
@@ -179,13 +190,13 @@
                             <div class="info">
                                 {{#if feature_image}}
                                 <a href="{{url}}" class="thumb main-effect epcl-loader">
-                                    <span class="fullimage cover lazy" data-src='{{img_url feature_image size="s"}}'></span>
+                                    <span class="fullimage cover lazy" data-src="{{img_url feature_image size="s"}}"></span>
                                     <span class="epcl-number">{{@number}}</span>
                                 </a>
                                 {{/if}}
                                 <div class="right">
                                     <h4 class="title usmall underline-effect"><a href="{{url}}">{{title}}</a></h4>
-                                    <time datetime='{{date format="YYYY-MM-DD"}}'>{{date format="MMM DD, YYYY"}}</time>
+                                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
                                 </div>
                             </div>
                             <div class="clear"></div>
@@ -211,18 +222,19 @@
                 </div>
             </div>
 
-            {{!-- Newsletter --}}
+            {{!-- Newsletter subscribe --}}
             <div class="epcl-subscribe textcenter bg-box grid-container grid-usmall">
                 <h3 class="title medium">Stay in the loop!</h3>
                 <h4 class="title large">Subscribe to our Newsletter</h4>
                 <form class="subscribe-form" data-members-form="subscribe">
                     <div class="form-group">
-                        <input type="email" name="email" class="inputbox rounded large" required placeholder="Enter your email address" data-members-email />
+                        <input type="email" name="email" class="inputbox rounded large" required
+                            placeholder="Enter your email address" data-members-email />
                         <button type="submit" class="submit absolute epcl-button">
                             Subscribe <svg class="icon"><use xlink:href="#send-email"></use></svg>
                         </button>
                     </div>
-                    <p class="success-message"><i class="fa fa-check"></i> You're subscribed!</p>
+                    <p class="success-message"><i class="fa fa-check"></i> You\'re subscribed!</p>
                     <p class="error-detail"></p>
                 </form>
             </div>
@@ -252,15 +264,29 @@
 
         </footer>
 
-    </div>
+    </div><!-- end #wrapper -->
 
+    {{!-- Body decorations background --}}
     <div class="body-decorations"></div>
 
     {{!-- Groovy JS --}}
-    <script src='{{asset "js/groovy.js"}}'></script>
+    <script src="{{asset "js/groovy.js"}}"></script>
 
     {{ghost_foot}}
 
 </body>
 
 </html>
+'''
+
+target = r'C:\Users\mozol\upminds_pro\academy\Casper\default.hbs'
+with open(target, 'w', encoding='utf-8', newline='\r\n') as f:
+    f.write(content)
+
+# Verify
+with open(target, 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+print(f"Written {len(lines)} lines")
+print("Line 15:", lines[14].strip())
+print("Line 16:", lines[15].strip())
+print("Line 500 area:", lines[-8].strip())

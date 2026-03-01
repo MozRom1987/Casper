@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{!-- Groovy CSS --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/plugins.min.css"}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset " css/plugins.min.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset " css/screen.css"}}" />
 
     {{!-- Google Fonts: Jost + Outfit --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,13 @@
 
             {
                 {
-                #foreach @site.tags
+                #get "tags" limit="all"
+            }
+        }
+
+            {
+                {
+                #foreach tags
             }
         }
 
@@ -41,7 +47,41 @@
             }
         }
 
-        .ctag svg {
+            {
+            --ctag-color: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            var(--main-color) {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+        .ctag- {
+                {
+                slug
+            }
+        }
+
+        svg {
             fill: {
                     {
                     #if accent_color
@@ -76,7 +116,31 @@
         }
 
         .epcl-category-overlay {
-            background: #fff;
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            #fff {
+                    {
+                    /if
+                }
+            }
+
+            ;
         }
 
         .ctag- {
@@ -120,7 +184,31 @@
         }
 
         .epcl-category-overlay {
-            background: #fff;
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            #fff {
+                    {
+                    /if
+                }
+            }
+
+            ;
         }
 
         .main-article.primary-tag- {
@@ -160,6 +248,12 @@
             {
                 {
                 /foreach
+            }
+        }
+
+            {
+                {
+                /get
             }
         }
 
@@ -373,7 +467,7 @@
 
             {{!-- Copyright --}}
             <div class="published textcenter" style="padding: 20px 0;">
-                <p>Â© {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>. Powered by <a
+                <p>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>. Powered by <a
                         href="https://ghost.org" target="_blank">Ghost</a>.</p>
             </div>
 
@@ -403,7 +497,7 @@
     <div class="body-decorations"></div>
 
     {{!-- Groovy JS --}}
-    <script src="{{asset "js/groovy.js"}}"></script>
+    <script src="{{asset " js/groovy.js"}}"></script>
 
     {{ghost_foot}}
 

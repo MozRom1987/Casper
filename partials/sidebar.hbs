@@ -1,0 +1,77 @@
+﻿<aside id="sidebar" class="grid-30 tablet-grid-30 hide-on-tablet hide-on-mobile">
+    <!-- About Widget -->
+    <div class="widget widget_epcl_about bg-box grid-25 tablet-grid-50 mobile-grid-100">
+        <div class="widget-content">
+            <h4 class="widget-title title medium bordered">About Us</h4>
+            {{#if @site.logo}}
+            <div class="avatar textcenter">
+                <a href="{{@site.url}}" class="translate-effect"><span class="fullimage cover lazy"
+                        style="background-color: var(--epcl-background-color);" data-src="{{@site.logo}}"></span></a>
+            </div>
+            {{/if}}
+            <div class="info textcenter">
+                {{#if @site.description}}
+                <p>{{@site.description}}</p>
+                {{else}}
+                <p>Welcome to our vibrant blog! Subscribe for more stories.</p>
+                {{/if}}
+            </div>
+            <div class="social textcenter">
+                <a href="{{@site.url}}/rss/" class="rss" target="_blank"><svg>
+                        <use xlink:href="#rss"></use>
+                    </svg></a>
+                {{#if @site.twitter}}<a href="https://twitter.com/{{@site.twitter}}" class="twitter"
+                    target="_blank"><svg>
+                        <use xlink:href="#twitter-icon"></use>
+                    </svg></a>{{/if}}
+                {{#if @site.facebook}}<a href="https://www.facebook.com/{{@site.facebook}}" class="facebook"
+                    target="_blank"><i class="fa fa-facebook"></i></a>{{/if}}
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!-- Latest Articles Widget -->
+    <div class="widget widget_epcl_posts_thumbs bg-box grid-25 tablet-grid-50 mobile-grid-100">
+        <h4 class="widget-title title medium bordered">Latest Articles</h4>
+        <div class="widget-content">
+            {{#get "posts" limit="3"}}
+            {{#foreach posts}}
+            <article class="item epcl-flex ctag-{{primary_tag.slug}}">
+                {{#if feature_image}}
+                <a href="{{url}}" class="thumb main-effect epcl-loader">
+                    <span class="fullimage cover lazy" data-src="{{img_url feature_image size=" s"}}"></span>
+                    <span class="epcl-number">{{@number}}</span>
+                </a>
+                {{else}}
+                <a href="{{url}}" class="thumb main-effect epcl-loader no-image">
+                    <span class="fullimage cover lazy no-image"
+                        style="background-color: var(--epcl-background-color);"></span>
+                    <span class="epcl-number">{{@number}}</span>
+                </a>
+                {{/if}}
+                <div class="info">
+                    <div class="right">
+                        <h4 class="title small"><a href="{{url}}" class="underline-effect">{{title}}</a></h4>
+                        <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </article>
+            {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+
+    <!-- Categories Widget -->
+    <div class="widget widget_tag_cloud bg-box grid-25 tablet-grid-50 mobile-grid-100">
+        <h4 class="widget-title title medium bordered">Categories</h4>
+        <div class="widget-content">
+            {{#get "tags" limit="20" include="count" order="count.posts desc"}}
+            {{#foreach tags}}
+            <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">{{name}}</a>
+            {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+</aside>

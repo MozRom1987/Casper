@@ -1,0 +1,164 @@
+﻿const fs = require('fs');
+
+const date = (daysOffset) => new Date(Date.now() - daysOffset * 86400000).toISOString();
+
+const data = {
+  "db": [
+    {
+      "meta": {
+        "exported_on": Date.now(),
+        "version": "5.0.0"
+      },
+      "data": {
+        "posts": [
+          {
+            "id": "post_1",
+            "uuid": "00000000-0000-0000-0000-000000000010",
+            "title": "Building your audience with subscriber signups",
+            "slug": "building-audience",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>How Ghost allows you to turn anonymous readers into an audience of active subscribers, so you know what's working and what isn't.</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>How Ghost allows you to turn anonymous readers into an audience of active subscribers, so you know what's working and what isn't.</p>",
+            "feature_image": "https://images.unsplash.com/photo-1510007870940-1e5e05d045bf?auto=format&fit=crop&w=1500&q=80",
+            "featured": 1,
+            "status": "published",
+            "visibility": "public",
+            "created_at": date(1),
+            "updated_at": date(1),
+            "published_at": date(1),
+            "custom_excerpt": "How Ghost allows you to turn anonymous readers into an audience of active subscribers, so you know what's working and what isn't.",
+            "author_id": "1"
+          },
+          {
+            "id": "post_2",
+            "uuid": "00000000-0000-0000-0000-000000000011",
+            "title": "Far far away, behind the word mountains",
+            "slug": "far-far-away",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>Hey there, welcome to your new home on the web! Unlike social networks, this one is all yours. Publish your work on a custom domain, invite your audience to subscribe.</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>Hey there, welcome to your new home on the web! Unlike social networks, this one is all yours. Publish your work on a custom domain, invite your audience to subscribe.</p>",
+            "feature_image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1500&q=80",
+            "status": "published",
+            "visibility": "public",
+            "created_at": date(5),
+            "updated_at": date(5),
+            "published_at": date(5),
+            "custom_excerpt": "Hey there, welcome to your new home on the web! Unlike social networks, this one is all yours.",
+            "author_id": "1"
+          },
+          {
+            "id": "post_3",
+            "uuid": "00000000-0000-0000-0000-000000000012",
+            "title": "Selling memberships with recurring revenue",
+            "slug": "selling-memberships",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>For creators and aspiring entrepreneurs looking to generate a sustainable recurring revenue stream from their creative work, Ghost has built-in payments allowing you to create...</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>For creators and aspiring entrepreneurs looking to generate a sustainable recurring revenue stream from their creative work, Ghost has built-in payments allowing you to create...</p>",
+            "feature_image": "https://images.unsplash.com/photo-1542382121-88f6c3ba50c1?auto=format&fit=crop&w=1500&q=80",
+            "status": "published",
+            "visibility": "members",
+            "created_at": date(10),
+            "updated_at": date(10),
+            "published_at": date(10),
+            "custom_excerpt": "For creators and aspiring entrepreneurs looking to generate a sustainable recurring revenue stream from their creative work.",
+            "author_id": "1"
+          },
+          {
+            "id": "post_4",
+            "uuid": "00000000-0000-0000-0000-000000000013",
+            "title": "Customizing your brand and design settings",
+            "slug": "customizing-brand",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>As discussed in the introduction post, one of the best things about Ghost is just how much you can customize to turn your site into something unique.</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>As discussed in the introduction post, one of the best things about Ghost is just how much you can customize to turn your site into something unique.</p>",
+            "feature_image": "https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=1500&q=80",
+            "status": "published",
+            "visibility": "paid",
+            "created_at": date(15),
+            "updated_at": date(15),
+            "published_at": date(15),
+            "custom_excerpt": "As discussed in the introduction post, one of the best things about Ghost is just how much you can customize to turn your site into something unique.",
+            "author_id": "2"
+          },
+          {
+            "id": "post_5",
+            "uuid": "00000000-0000-0000-0000-000000000014",
+            "title": "What you need to know about Ghost Editor",
+            "slug": "what-you-need-to-know",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>The Ghost editor has everything you need to fully optimise your content. This is where you can add tags and set metadata.</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>The Ghost editor has everything you need to fully optimise your content. This is where you can add tags and set metadata.</p>",
+            "feature_image": "https://images.unsplash.com/photo-1505322022379-7a3353ee6234?auto=format&fit=crop&w=1500&q=80",
+            "status": "published",
+            "visibility": "public",
+            "created_at": date(20),
+            "updated_at": date(20),
+            "published_at": date(20),
+            "custom_excerpt": "The Ghost editor has everything you need to fully optimise your content. This is where you can add tags.",
+            "author_id": "2"
+          }
+        ],
+        "tags": [
+          {
+            "id": "tag_travel",
+            "name": "Travel",
+            "slug": "travel",
+            "description": "Travel around the world",
+            "accent_color": "#ff3864"
+          },
+          {
+            "id": "tag_start",
+            "name": "Getting Started",
+            "slug": "getting-started",
+            "description": "Getting Started",
+            "accent_color": "#00d7a6"
+          },
+          {
+            "id": "tag_health",
+            "name": "Health",
+            "slug": "health",
+            "description": "Health and wellness",
+            "accent_color": "#ffaa00"
+          },
+          {
+            "id": "tag_tech",
+            "name": "Technology",
+            "slug": "technology",
+            "description": "Tech news",
+            "accent_color": "#4d4dff"
+          }
+        ],
+        "posts_tags": [
+          {"id": "pt_10", "post_id": "post_1", "tag_id": "tag_travel", "sort_order": 0},
+          {"id": "pt_11", "post_id": "post_2", "tag_id": "tag_start", "sort_order": 0},
+          {"id": "pt_12", "post_id": "post_3", "tag_id": "tag_health", "sort_order": 0},
+          {"id": "pt_13", "post_id": "post_4", "tag_id": "tag_tech", "sort_order": 0},
+          {"id": "pt_14", "post_id": "post_5", "tag_id": "tag_tech", "sort_order": 0}
+        ],
+        "users": [
+          {
+            "id": "1",
+            "name": "Jonathan Doe",
+            "slug": "jonathan-doe",
+            "email": "jonathan@example.com",
+            "profile_image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80",
+            "bio": "Hello! My name is Jonathan Doe."
+          },
+          {
+            "id": "2",
+            "name": "Mary Buzard",
+            "slug": "mary-buzard",
+            "email": "mary@example.com",
+            "profile_image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80",
+            "bio": "Actively writing articles for this website."
+          }
+        ],
+        "posts_authors": [
+          {"id": "pa_10", "post_id": "post_1", "author_id": "1", "sort_order": 0},
+          {"id": "pa_11", "post_id": "post_2", "author_id": "1", "sort_order": 0},
+          {"id": "pa_12", "post_id": "post_3", "author_id": "1", "sort_order": 0},
+          {"id": "pa_13", "post_id": "post_4", "author_id": "2", "sort_order": 0},
+          {"id": "pa_14", "post_id": "post_5", "author_id": "2", "sort_order": 0}
+        ]
+      }
+    }
+  ]
+};
+
+fs.writeFileSync('c:/Users/mozol/upminds_pro/academy/Casper/groovy-masonry-demo.json', JSON.stringify(data, null, 2), 'utf8');
+console.log('JSON regenerated successfully');

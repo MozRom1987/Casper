@@ -1,0 +1,48 @@
+{{!< default}} <main id="home" class="main grid-container">
+    <div class="epcl-row">
+        <div class="content-wrapper content">
+            <div class="center">
+                {{#post}}
+                <h1 class="main-title title large textcenter">{{title}}</h1>
+                <div class="text">{{content}}</div>
+                {{/post}}
+
+                <section class="epcl-authors section grid-container np-tablet" id="epcl-authors"
+                    style="margin-top: 50px;">
+                    <div class="epcl-row">
+                        {{#get "authors" limit="all" include="count.posts" order="count.posts desc"}}
+                        {{#foreach authors}}
+                        <div class="item grid-25 tablet-grid-33 mobile-grid-100">
+                            <a href="{{url}}" title="Articles: {{count.posts}}" class="shadow-effect thumb epcl-loader">
+                                {{#if profile_image}}
+                                <span class="fullwidth img cover lazy" data-src="{{img_url profile_image size="
+                                    m"}}"></span>
+                                {{else}}
+                                <span class="fullwidth img cover lazy no-image"
+                                    style="background-color: var(--epcl-background-color);"></span>
+                                {{/if}}
+                                <span class="info">
+                                    <h4 class="title bordered usmall">{{name}}</h4>
+                                </span>
+                            </a>
+                            <div class="social">
+                                {{#if twitter}}<a href="{{twitter_url}}" class="twitter tooltip" title="Twitter"
+                                    target="_blank"><svg class="icon">
+                                        <use xlink:href="#twitter-icon"></use>
+                                    </svg></a>{{/if}}
+                                {{#if facebook}}<a href="{{facebook_url}}" class="facebook tooltip" title="Facebook"
+                                    target="_blank"><i class="fa fa-facebook"></i></a>{{/if}}
+                            </div>
+                            {{#if bio}}
+                            <div class="bio">{{bio}}</div>
+                            {{/if}}
+                        </div>
+                        {{/foreach}}
+                        {{/get}}
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+    </main>

@@ -1,140 +1,216 @@
-{{!< default}}
+﻿{{!< default}} {{!-- post.hbs — Single Post (Groovy classic layout) --}} <main id="main" class="page-content single">
+    <div class="grid-container grid-large">
+        <div class="epcl-row">
 
-{{!-- The tag above means: insert everything in this file
-into the {body} tag of the default.hbs template --}}
+            {{!-- Post Content (70% width) --}}
+            <div class="grid-70 tablet-grid-100 mobile-grid-100">
 
+                <article id="single" class="main-article primary-tag-{{primary_tag.slug}} {{post_class}}">
 
-{{#post}}
-{{!-- Everything inside the #post block pulls data from the post --}}
+                    {{!-- Post Header --}}
+                    <div class="post-header bg-box epcl-flex no-wrap {{#unless feature_image}}no-image{{/unless}}">
 
-<main id="site-main" class="site-main">
-<article class="article {{post_class}} {{#match @custom.post_image_style "Full"}}image-full{{else match @custom.post_image_style "=" "Small"}}image-small{{/match}}">
+                        {{!-- Featured Image --}}
+                        {{#if feature_image}}
+                        <div class="thumb epcl-loader">
+                            <img src="{{img_url feature_image size=" m"}}" alt="{{title}}" class="cover"
+                                loading="lazy" />
+                            {{#if primary_tag}}
+                            <div class="epcl-category-overlay">
+                                <a href="{{primary_tag.url}}" class="epcl-category">
+                                    {{primary_tag.name}}
+                                </a>
+                            </div>
+                            {{/if}}
+                        </div>
+                        {{/if}}
 
-    <header class="article-header gh-canvas">
+                        {{!-- Post Meta / Title --}}
+                        <div class="info">
+                            <h1 class="title large post-title">{{title}}</h1>
+                            {{#if custom_excerpt}}<p class="excerpt">{{custom_excerpt}}</p>{{/if}}
 
-        <div class="article-tag post-card-tags">
-            {{#primary_tag}}
-                <span class="post-card-primary-tag">
-                    <a href="{{url}}">{{name}}</a>
-                </span>
-            {{/primary_tag}}
-            {{#if featured}}
-                <span class="post-card-featured">{{> "icons/fire"}} Featured</span>
-            {{/if}}
-        </div>
+                            <div class="meta epcl-flex">
+                                {{#if primary_author}}
+                                <div class="author epcl-flex">
+                                    {{#if primary_author.profile_image}}
+                                    <a href="{{primary_author.url}}" class="avatar epcl-loader">
+                                        <img src="{{img_url primary_author.profile_image size=" xs"}}"
+                                            alt="{{primary_author.name}}" />
+                                    </a>
+                                    {{/if}}
+                                    <div class="author-info">
+                                        <span class="label">By</span>
+                                        <a href="{{primary_author.url}}" class="name">{{primary_author.name}}</a>
+                                    </div>
+                                </div>
+                                {{/if}}
+                                <span class="date">
+                                    <svg class="icon usmall">
+                                        <use xlink:href="#calendar"></use>
+                                    </svg>
+                                    <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
+                                </span>
+                                {{#if reading_time}}
+                                <span class="reading-time">{{reading_time}} min read</span>
+                                {{/if}}
+                            </div>
 
-        <h1 class="article-title">{{title}}</h1>
+                            {{!-- Tags --}}
+                            {{#if tags}}
+                            <div class="tags">
+                                {{#foreach tags}}
+                                <a href="{{url}}" class="ctag ctag-{{slug}}">
+                                    {{name}}
+                                </a>
+                                {{/foreach}}
+                            </div>
+                            {{/if}}
 
-        {{#if custom_excerpt}}
-            <p class="article-excerpt">{{custom_excerpt}}</p>
-        {{/if}}
+                            {{!-- Membership badge --}}
+                            {{#unless access}}
+                            <div class="epcl-membership-badge">
+                                <svg class="icon">
+                                    <use xlink:href="#locked"></use>
+                                </svg>
+                                Members only
+                            </div>
+                            {{/unless}}
+                        </div>
 
-        <div class="article-byline">
-        <section class="article-byline-content">
+                        <div class="clear"></div>
+                    </div>
 
-            <ul class="author-list instapaper_ignore">
-                {{#foreach authors}}
-                <li class="author-list-item">
-                    {{#if profile_image}}
-                    <a href="{{url}}" class="author-avatar" aria-label="Read more of {{name}}">
-                        <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                    </a>
-                    {{else}}
-                    <a href="{{url}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>
+                    {{!-- Post Body --}}
+                    <div class="post-content bg-box">
+
+                        {{!-- Membership paywall --}}
+                        {{#unless access}}
+                        <div class="epcl-paywall">
+                            <div class="epcl-paywall-content textcenter">
+                                <svg class="icon xlarge">
+                                    <use xlink:href="#locked"></use>
+                                </svg>
+                                <h3>This content is for members only.</h3>
+                                <p>Join our newsletter to get access to exclusive content.</p>
+                                <a href="#/portal/signup" class="epcl-button dark">Become a member</a>
+                                <span style="display:inline-block;width:10px;"></span>
+                                <a href="#/portal/signin" class="epcl-button">Sign in</a>
+                            </div>
+                        </div>
+                        {{/unless}}
+
+                        <div class="epcl-post-body gh-content">
+                            {{content}}
+                        </div>
+
+                    </div>
+
+                    {{!-- Social Share --}}
+                    <div class="post-share bg-box">
+                        <h4 class="title usmall">Share this post:</h4>
+                        <div class="epcl-social-buttons fill-color">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}"
+                                class="facebook" target="_blank" rel="nofollow noopener">
+                                <i class="fa fa-facebook"></i> Facebook
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{url absolute=" true"}}&text={{encode
+                                title}}" class="twitter" target="_blank" rel="nofollow noopener">
+                                <svg>
+                                    <use xlink:href="#twitter-icon"></use>
+                                </svg> X / Twitter
+                            </a>
+                        </div>
+                    </div>
+
+                    {{!-- Author Box --}}
+                    {{#foreach authors}}
+                    <div id="author" class="bg-box">
+                        <div class="epcl-flex">
+                            {{#if profile_image}}
+                            <div class="author-avatar">
+                                <a href="{{url}}" class="author-image epcl-loader">
+                                    <img src="{{img_url profile_image size=" s"}}" alt="{{name}}" loading="lazy" />
+                                </a>
+                            </div>
+                            {{/if}}
+                            <div class="author-info">
+                                <h4 class="title medium"><a href="{{url}}">{{name}}</a></h4>
+                                {{#if bio}}<p>{{bio}}</p>{{/if}}
+                                {{#if website}}<a href="{{website}}" class="epcl-button dark small" target="_blank"
+                                    rel="noopener noreferrer">Website</a>{{/if}}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    {{/foreach}}
+
+                    {{!-- Related Articles --}}
+                    {{#get "posts" filter="tags:[{{primary_tag.slug}}]+id:-{{id}}" limit="3"}}
+                    {{#if posts}}
+                    <section class="related-articles bg-box">
+                        <h3 class="title medium bordered">Related Articles</h3>
+                        <div class="epcl-row">
+                            {{#foreach posts}}
+                            <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                                <article class="main-article vertical-card primary-tag-{{primary_tag.slug}}">
+                                    {{#if feature_image}}
+                                    <a href="{{url}}" class="thumb epcl-loader">
+                                        <span class="fullimage cover lazy" data-src="{{img_url feature_image size="
+                                            s"}}"></span>
+                                        <span class="epcl-category-overlay">
+                                            {{#if primary_tag}}
+                                            <a href="{{primary_tag.url}}" class="epcl-category">
+                                                {{primary_tag.name}}
+                                            </a>
+                                            {{/if}}
+                                        </span>
+                                    </a>
+                                    {{/if}}
+                                    <div class="info">
+                                        <h3 class="title small"><a href="{{url}}" class="underline-effect">{{title}}</a>
+                                        </h3>
+                                        <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD,
+                                            YYYY"}}</time>
+                                    </div>
+                                </article>
+                            </div>
+                            {{/foreach}}
+                        </div>
+                    </section>
                     {{/if}}
-                </li>
-                {{/foreach}}
-            </ul>
+                    {{/get}}
 
-            <div class="article-byline-meta">
-                <h4 class="author-name">{{authors}}</h4>
-                <div class="byline-meta-content">
-                    <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
-                    {{#if reading_time}}
-                        <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
+                    {{!-- Previous / Next Post --}}
+                    <nav class="post-navigation epcl-flex bg-box">
+                        {{#prev_post}}
+                        <a href="{{url}}" class="prev-post">
+                            <span class="label">&laquo; Previous</span>
+                            <span class="title usmall">{{title}}</span>
+                        </a>
+                        {{/prev_post}}
+                        {{#next_post}}
+                        <a href="{{url}}" class="next-post">
+                            <span class="label">Next &raquo;</span>
+                            <span class="title usmall">{{title}}</span>
+                        </a>
+                        {{/next_post}}
+                    </nav>
+
+                    {{!-- Ghost Comments --}}
+                    {{#if comments}}
+                    <section class="post-comments bg-box">
+                        {{comments}}
+                    </section>
                     {{/if}}
-                </div>
+
+                </article>
+
             </div>
 
-        </section>
+            {{!-- Sidebar --}}
+            {{> "sidebar"}}
+
         </div>
-
-        {{#match @custom.post_image_style "!=" "Hidden"}}
-        {{#if feature_image}}
-            <figure class="article-image">
-                {{!-- This is a responsive image, it loads different sizes depending on device
-                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-                <img
-                    srcset="{{img_url feature_image size="s"}} 300w,
-                            {{img_url feature_image size="m"}} 600w,
-                            {{img_url feature_image size="l"}} 1000w,
-                            {{img_url feature_image size="xl"}} 2000w"
-                    sizes="(min-width: 1400px) 1400px, 92vw"
-                    src="{{img_url feature_image size="xl"}}"
-                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                />
-                {{#if feature_image_caption}}
-                    <figcaption>{{feature_image_caption}}</figcaption>
-                {{/if}}
-            </figure>
-        {{/if}}
-        {{/match}}
-
-    </header>
-
-    <section class="gh-content gh-canvas">
-        {{content}}
-    </section>
-
-    {{#if comments}}
-        <section class="article-comments gh-canvas">
-            {{comments}}
-        </section>
-    {{/if}}
-
-</article>
-</main>
-
-{{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
-{{#if @site.members_enabled}}
-{{#unless @member}}
-{{#unless @site.comments_enabled}}
-{{#if access}}
-    <section class="footer-cta outer">
-        <div class="inner">
-            {{#if @custom.email_signup_text}}<h2 class="footer-cta-title">{{@custom.email_signup_text}}</h2>{{/if}}
-            <a class="footer-cta-button" href="#/portal" data-portal>
-                <div class="footer-cta-input">Enter your email</div>
-                <span>Subscribe</span>
-            </a>
-        </div>
-    </section>
-{{/if}}
-{{/unless}}
-{{/unless}}
-{{/if}}
-
-
-{{!-- Read more links, just above the footer --}}
-{{#if @custom.show_recent_posts_footer}}
-    {{!-- The {#get} helper below fetches some of the latest posts here
-    so that people have something else to read when they finish this one.
-
-    This query gets the latest 3 posts on the site, but adds a filter to
-    exclude the post we're currently on from being included. --}}
-    {{#get "posts" filter="id:-{{id}}" limit="3" as |more_posts|}}
-
-        {{#if more_posts}}
-            <aside class="read-more-wrap outer">
-                <div class="read-more inner">
-                    {{#foreach more_posts}}
-                        {{> "post-card"}}
-                    {{/foreach}}
-                </div>
-            </aside>
-        {{/if}}
-
-    {{/get}}
-{{/if}}
-
-{{/post}}
+    </div>
+    </main>

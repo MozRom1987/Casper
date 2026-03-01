@@ -1,97 +1,66 @@
-{{!< default}}
-{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
+{{!< default}} {{!-- author.hbs — Author page with Sidebar --}} <main id="main" class="page-content author-page">
+    <div class="grid-container grid-large">
 
-<main id="site-main" class="site-main outer">
-<div class="inner posts">
-
-    <div class="post-feed">
-
+        {{!-- Author Header --}}
         {{#author}}
-        <section class="post-card post-card-large">
-
-            {{#if cover_image}}
-            <div class="post-card-image-link">
-                {{!-- This is a responsive image, it loads different sizes depending on device
-                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-                <img class="post-card-image"
-                    srcset="{{img_url cover_image size="s"}} 300w,
-                            {{img_url cover_image size="m"}} 600w,
-                            {{img_url cover_image size="l"}} 1000w,
-                            {{img_url cover_image size="xl"}} 2000w"
-                    sizes="(max-width: 1000px) 400px, 800px"
-                    src="{{img_url cover_image size="m"}}"
-                    alt="{{title}}"
-                />
-            </div>
-            {{/if}}
-
-            <div class="post-card-content">
-            <div class="post-card-content-link">
-
+        <div class="page-header author-header bg-box">
+            <div class="epcl-flex">
                 {{#if profile_image}}
-                    <img class="author-profile-pic" src="{{profile_image}}" alt="{{name}}" />
+                <div class="author-avatar">
+                    <img src="{{img_url profile_image size=" m"}}" alt="{{name}}" class="circle" loading="lazy" />
+                </div>
                 {{/if}}
-
-                <header class="post-card-header">
-                    <h2 class="post-card-title">{{name}}</h2>
-                </header>
-
-                {{#if bio}}
-                    <div class="post-card-excerpt">{{bio}}</div>
-                {{/if}}
-
-                <footer class="author-profile-footer">
-                    {{#if location}}
-                        <div class="author-profile-location">{{location}}</div>
-                    {{/if}}
-                    <div class="author-profile-meta">
-                        {{#if website}}
-                            <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
-                        {{/if}}
-                        {{#if twitter}}
-                            <a class="author-profile-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                        {{/if}}
-                        {{#if facebook}}
-                            <a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                        {{/if}}
-                        {{#if linkedin}}
-                            <a class="author-profile-social-link" href="{{social_url type="linkedin"}}" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
-                        {{/if}}
-                        {{#if bluesky}}
-                            <a class="author-profile-social-link" href="{{social_url type="bluesky"}}" target="_blank" rel="noopener">{{> "icons/bluesky"}}</a>
-                        {{/if}}
-                        {{#if threads}}
-                            <a class="author-profile-social-link" href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{> "icons/threads"}}</a>
-                        {{/if}}
-                        {{#if mastodon}}
-                            <a class="author-profile-social-link" href="{{social_url type="mastodon"}}" target="_blank" rel="noopener">{{> "icons/mastodon"}}</a>
-                        {{/if}}
-                        {{#if tiktok}}
-                            <a class="author-profile-social-link" href="{{social_url type="tiktok"}}" target="_blank" rel="noopener">{{> "icons/tiktok"}}</a>
-                        {{/if}}
-                        {{#if youtube}}
-                            <a class="author-profile-social-link" href="{{social_url type="youtube"}}" target="_blank" rel="noopener">{{> "icons/youtube"}}</a>
-                        {{/if}}
-                        {{#if instagram}}
-                            <a class="author-profile-social-link" href="{{social_url type="instagram"}}" target="_blank" rel="noopener">{{> "icons/instagram"}}</a>
-                        {{/if}}
+                <div class="author-info">
+                    <h1 class="title large">{{name}}</h1>
+                    {{#if bio}}<p>{{bio}}</p>{{/if}}
+                    {{#if location}}<p class="location"><i class="fa fa-map-marker"></i> {{location}}</p>{{/if}}
+                    <div class="epcl-social-buttons fill-color">
+                        {{#if website}}<a href="{{website}}" class="web" target="_blank" rel="noopener noreferrer"><i
+                                class="fa fa-globe"></i></a>{{/if}}
+                        {{#if twitter}}<a href="https://twitter.com/{{twitter}}" class="twitter" target="_blank"
+                            rel="nofollow noopener"><svg>
+                                <use xlink:href="#twitter-icon"></use>
+                            </svg></a>{{/if}}
+                        {{#if facebook}}<a href="https://www.facebook.com/{{facebook}}" class="facebook" target="_blank"
+                            rel="nofollow noopener"><i class="fa fa-facebook"></i></a>{{/if}}
                     </div>
-                </footer>
-
+                    <p class="post-count">{{plural ../pagination.total empty="No posts" singular="% post" plural="%
+                        posts"}}</p>
+                </div>
             </div>
-            </div>
-
-        </section>
+        </div>
         {{/author}}
 
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            {{> "post-card"}}
-        {{/foreach}}
+        <div class="epcl-row" style="margin-top: 30px;">
 
+            {{!-- Posts (70%) --}}
+            <div class="grid-70 tablet-grid-100 mobile-grid-100" id="content">
+                <section class="articles classic">
+
+                    {{#foreach posts}}
+                    {{> "post-card"}}
+                    {{/foreach}}
+
+                </section>
+
+                {{#if pagination}}
+                <nav class="pagination" role="navigation">
+                    <div class="pagination-wrapper epcl-flex">
+                        {{#if pagination.prev}}
+                        <a class="prev epcl-button dark" href="{{page_url pagination.prev}}">&laquo; Newer</a>
+                        {{/if}}
+                        <span class="page-number">Page {{pagination.page}} of {{pagination.pages}}</span>
+                        {{#if pagination.next}}
+                        <a class="next epcl-button dark" href="{{page_url pagination.next}}">Older &raquo;</a>
+                        {{/if}}
+                    </div>
+                </nav>
+                {{/if}}
+            </div>
+
+            {{!-- Sidebar --}}
+            {{> "sidebar"}}
+
+        </div>
     </div>
-
-    {{pagination}}
-    
-</div>
-</main>
+    </main>

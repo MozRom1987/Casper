@@ -1,78 +1,54 @@
-{{!-- This is a partial file used to generate a post "card"
-which templates loop over to generate a list of posts. --}}
+﻿<article class="bg-box default classic-large primary-cat-4 grid-100 tablet-grid-100 {{post_class}}">
+    <div class="post-format-image epcl-flex">
+        {{#if feature_image}}
+        <div class="featured-image">    
+            <a href="{{url}}" class="thumb epcl-loader main-effect medium-shadow">   
+                <span class="fullimage cover lazy" data-src="{{img_url feature_image size="m"}}"></span>  
+            </a>
+            <div class="meta absolute">
+                <a href="{{url}}#comments" class="comments meta-info icon mobile tooltip"><svg><use xlink:href="#comments-icon"></use></svg></a>  
+            </div>    
+        </div>
+        {{/if}}
 
-<article class="post-card {{post_class}}{{#match @custom.feed_layout "Classic"}}{{#is "home"}}{{#has index="0"}} post-card-large{{/has}}{{#has index="1,2"}} dynamic{{/has}}{{/is}}{{/match}}{{#match @custom.feed_layout "Grid"}} keep-ratio{{/match}}{{#match @custom.feed_layout "List"}}{{^is "tag, author"}} post-card-large{{/is}}{{/match}}{{#unless access}} post-access-{{visibility}}{{/unless}}">
+        <div class="info">   
+            <header> 
+                <div class="meta epcl-flex">
+                    {{#if primary_tag}}
+                        <div class="tags">
+                            <a href="{{primary_tag.url}}" class="ctag ctag-{{primary_tag.slug}}"><svg><use xlink:href="#tag-decoration"></use></svg>{{primary_tag.name}}</a>
+                        </div>
+                    {{/if}}
+                    <time class="meta-info" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>  
+                    {{#if reading_time}}
+                        <div class="min-read meta-info hide-on-tablet"><svg class="icon"><use xlink:href="#calendar"></use></svg> {{reading_time}}</div>
+                    {{/if}}
+                    <div class="clear"></div>
+                </div>
+                <h1 class="main-title title large underline-effect"><a href="{{url}}">{{title}}</a></h1>
+            </header>
 
-    {{#if feature_image}}
-    <a class="post-card-image-link" href="{{url}}">
-
-        {{!-- This is a responsive image, it loads different sizes depending on device
-        https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-        <img class="post-card-image"
-            srcset="{{img_url feature_image size="s"}} 300w,
-                    {{img_url feature_image size="m"}} 600w,
-                    {{img_url feature_image size="l"}} 1000w,
-                    {{img_url feature_image size="xl"}} 2000w"
-            sizes="(max-width: 1000px) 400px, 800px"
-            src="{{img_url feature_image size="m"}}"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-            loading="lazy"
-        />
-
-        {{#unless access}}
-        {{^has visibility="public"}}
-            <div class="post-card-access">
-                {{> "icons/lock"}}
-                {{#has visibility="members"}}
-                    Members only
-                {{else}}
-                    Paid-members only
-                {{/has}}
+            {{#if excerpt}}
+            <div class="post-excerpt">
+                <p>{{excerpt words="30"}}...</p>               
             </div>
-        {{/has}}
-        {{/unless}}
+            {{/if}}
 
-    </a>
-    {{/if}}
-
-    <div class="post-card-content">
-
-        <a class="post-card-content-link" href="{{url}}">
-            <header class="post-card-header">
-                <div class="post-card-tags">
-                    {{#primary_tag}}
-                        <span class="post-card-primary-tag">{{name}}</span>
-                    {{/primary_tag}}
-                    {{#if featured}}
-                        <span class="post-card-featured">{{> "icons/fire"}} Featured</span>
+            <footer class="bottom epcl-flex">
+                <div class="meta bottom">
+                    <a href="{{url}}" class="continue-reading epcl-button white active">Continue Reading <svg><use xlink:href="#right-arrow"></use></svg></a>
+                    {{#if primary_author}}
+                        <a href="{{primary_author.url}}" title="{{primary_author.name}}" class="author meta-info hide-on-mobile hide-on-tablet hide-on-desktop-sm">                                        
+                            {{#if primary_author.profile_image}}
+                                <span class="author-image cover lazy" data-src="{{img_url primary_author.profile_image size="xs"}}"></span>                       
+                            {{/if}}
+                            <span class="author-name">{{primary_author.name}}</span>
+                        </a>
                     {{/if}}
                 </div>
-                <h2 class="post-card-title">
-                    {{#unless access}}
-                    {{^has visibility="public"}}
-                        {{#unless feature_image}}
-                            {{> "icons/lock"}}
-                        {{/unless}}
-                    {{/has}}
-                    {{/unless}}
-                    {{title}}
-                </h2>
-            </header>
-            {{#if excerpt}}
-                <div class="post-card-excerpt">{{excerpt}}</div>
-            {{/if}}
-        </a>
-
-        <footer class="post-card-meta">
-            <time class="post-card-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
-            {{#if reading_time}}
-                <span class="post-card-meta-length">{{reading_time}}</span>
-            {{/if}}
-            {{#if @site.comments_enabled}}
-                {{comment_count}}
-            {{/if}}
-        </footer>
-
+            </footer>
+        </div>   
     </div>
-
+    <div class="clear"></div>
+    <div class="epcl-category-overlay"></div>
 </article>

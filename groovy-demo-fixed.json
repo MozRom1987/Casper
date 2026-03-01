@@ -1,0 +1,91 @@
+{
+  "db": [
+    {
+      "meta": {
+        "exported_on": 1772140581937,
+        "version": "5.0.0"
+      },
+      "data": {
+        "posts": [
+          {
+            "id": "post_1",
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "title": "Welcome to Groovy - An Identical Match",
+            "slug": "welcome-groovy",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>Welcome to your completely matched Groovy theme!</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>Welcome to your completely matched Groovy theme!</p>",
+            "feature_image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80",
+            "featured": 1,
+            "status": "published",
+            "visibility": "public",
+            "created_at": "2026-02-26T21:16:21.937Z",
+            "updated_at": "2026-02-26T21:16:21.938Z",
+            "published_at": "2026-02-26T21:16:21.938Z",
+            "custom_excerpt": "This is a beautiful test post for your theme.",
+            "author_id": "1"
+          },
+          {
+            "id": "post_2",
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "title": "Beautiful Demo Post For Testing",
+            "slug": "demo-post-testing",
+            "mobiledoc": "{\"version\":\"0.3.1\",\"markups\":[],\"atoms\":[],\"cards\":[[\"html\",{\"cardName\":\"html\",\"html\":\"<p>Another test post with a different background.</p>\"}]],\"sections\":[[10,0]]}",
+            "html": "<p>Another test post with a different background.</p>",
+            "feature_image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            "status": "published",
+            "visibility": "public",
+            "created_at": "2026-02-26T21:16:21.938Z",
+            "updated_at": "2026-02-26T21:16:21.938Z",
+            "published_at": "2026-02-26T21:16:21.938Z",
+            "author_id": "1",
+            "custom_excerpt": "Let's explore how tags and layouts are acting together."
+          }
+        ],
+        "tags": [
+          {
+            "id": "tag_1",
+            "name": "Groovy Features",
+            "slug": "groovy-features",
+            "description": "Latest news",
+            "accent_color": "#ff1a75"
+          },
+          {
+            "id": "tag_2",
+            "name": "Ghost Test",
+            "slug": "ghost-test",
+            "description": "Travel the world",
+            "accent_color": "#00e676"
+          }
+        ],
+        "posts_tags": [
+          {
+            "id": "pt_1",
+            "post_id": "post_1",
+            "tag_id": "tag_1",
+            "sort_order": 0
+          },
+          {
+            "id": "pt_2",
+            "post_id": "post_2",
+            "tag_id": "tag_2",
+            "sort_order": 0
+          }
+        ],
+        "posts_authors": [
+          {
+            "id": "pa_1",
+            "post_id": "post_1",
+            "author_id": "1",
+            "sort_order": 0
+          },
+          {
+            "id": "pa_2",
+            "post_id": "post_2",
+            "author_id": "1",
+            "sort_order": 0
+          }
+        ]
+      }
+    }
+  ]
+}

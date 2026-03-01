@@ -1,0 +1,81 @@
+<article class="default grid-33 tablet-grid-50 mobile-grid-100 np-mobile {{post_class}}">
+    <div class="epcl-bg bg-box">
+        <header>
+            <div class="post-format-image">
+                <div class="featured-image">
+                    {{#if feature_image}}
+                    <a href="{{url}}" class="thumb epcl-loader">
+                        <span class="fullimage cover lazy" data-src="{{img_url feature_image size=" m"}}"></span>
+                    </a>
+                    {{else}}
+                    <a href="{{url}}" class="thumb epcl-loader no-image">
+                        <span class="fullimage cover lazy no-image"
+                            style="background-color: var(--epcl-background-color);"></span>
+                    </a>
+                    {{/if}}
+
+                    <div class="info textleft">
+                        <h2 class="main-title title large inline shadow-effect"><a href="{{url}}">{{title}}</a></h2>
+                    </div>
+
+                    <div class="meta absolute">
+                        <a href="{{url}}#comments" class="comments meta-info icon mobile tooltip"><svg>
+                                <use xlink:href="#comments-icon"></use>
+                            </svg></a>
+                    </div>
+
+                    {{#if primary_tag}}
+                    <div class="tags">
+                        <a href="{{primary_tag.url}}" class="ctag ctag-{{primary_tag.slug}}"><svg>
+                                <use xlink:href="#tag-decoration"></use>
+                            </svg>{{primary_tag.name}}</a>
+                    </div>
+                    {{/if}}
+                </div>
+
+                <div class="clear"></div>
+                <!-- start: .meta -->
+                <div class="meta date">
+                    <time class="meta-info" datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD,
+                        YYYY"}}</time>
+                    {{#if reading_time}}
+                    <div class="min-read meta-info">{{reading_time}}</div>
+                    {{/if}}
+                    <div class="clear"></div>
+                </div>
+                <!-- end: .meta -->
+            </div>
+
+        </header>
+
+        {{#if excerpt}}
+        <div class="post-excerpt">
+            <p>{{excerpt words="15"}}...</p>
+            <div class="clear"></div>
+        </div>
+        {{/if}}
+
+        <footer class="bottom">
+            <div class="meta bottom">
+                {{#if primary_author}}
+                <a href="{{primary_author.url}}" title="{{primary_author.name}}"
+                    class="author meta-info hide-on-mobile hide-on-tablet">
+                    {{#if primary_author.profile_image}}
+                    <span class="author-image cover lazy" data-src="{{img_url primary_author.profile_image size="
+                        xs"}}"></span>
+                    {{/if}}
+                    <span class="author-name">{{primary_author.name}}</span>
+                </a>
+                {{/if}}
+
+                <a href="{{url}}" class="continue-reading epcl-button white">Continue Reading</a>
+
+                <div class="clear"></div>
+            </div>
+        </footer>
+
+        <div class="clear"></div>
+        <div class="epcl-category-overlay"></div>
+
+    </div>
+</article>

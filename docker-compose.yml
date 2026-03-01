@@ -1,0 +1,20 @@
+services:
+  ghost:
+    image: ghost:5-alpine
+    restart: unless-stopped
+    ports:
+      - "2369:2368"
+    environment:
+      # Локальна розробка
+      NODE_ENV: development
+      url: http://localhost:2369
+      # Вимкнути email (не потрібен локально)
+      mail__transport: Direct
+    volumes:
+      # Постійне сховище Ghost (контент, база даних)
+      - ghost_data:/var/lib/ghost/content
+      # Монтуємо теку теми напряму — зміни одразу видно в Ghost
+      - .:/var/lib/ghost/content/themes/groovy-casper
+
+volumes:
+  ghost_data:

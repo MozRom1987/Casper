@@ -1,19 +1,81 @@
 {{!< default}} <main id="home" class="main grid-container">
-    <div class="epcl-row">
-        <!-- start: .content-wrapper -->
-        <div class="content-wrapper content">
-            <div class="center">
-                <!-- start: .articles -->
-                <div class="articles grid-posts">
-                    {{#foreach posts}}
-                    {{> "post-card-grid"}}
-                    {{/foreach}}
-                </div>
-                <!-- end: .articles -->
 
-                {{pagination}}
-            </div>
+    {{!-- ==========================================================
+    ROW 1: HERO пост (66%) + PROBLEM секція (33%)
+    Однакова висота через flexbox (.neiro-hero-row)
+    ========================================================== --}}
+    <div class="epcl-row neiro-hero-row">
+
+        {{!-- HERO — пост з тегом "featured" --}}
+        {{#get "posts" filter="tag:featured" limit="1"}}
+        {{#foreach posts}}
+        <div class="grid-66 tablet-grid-100 mobile-grid-100 neiro-hero-wrap">
+            <article class="bg-box neiro-hero-article">
+
+                {{!-- Зображення --}}
+                {{#if feature_image}}
+                <a href="{{url}}" class="neiro-hero-thumb main-effect epcl-loader">
+                    <span class="fullimage cover lazy" data-src='{{img_url feature_image size="l"}}'></span>
+                    {{#if primary_tag}}
+                    <div class="tags">
+                        <a href="{{primary_tag.url}}" class="ctag ctag-{{primary_tag.slug}}">
+                            <svg>
+                                <use xlink:href="#tag-decoration"></use>
+                            </svg>{{primary_tag.name}}
+                        </a>
+                    </div>
+                    {{/if}}
+                </a>
+                {{/if}}
+
+                {{!-- Текст блок --}}
+                <div class="neiro-hero-info">
+                    <time datetime="{{date format=" YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
+                    <h2 class="title large">
+                        <a href="{{url}}">{{title}}</a>
+                    </h2>
+                    {{#if excerpt}}
+                    <p class="post-excerpt">{{excerpt words="20"}}...</p>
+                    {{/if}}
+                    <a href="{{url}}" class="epcl-button white active">
+                        Continue Reading <svg class="icon">
+                            <use xlink:href="#right-arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+
+            </article>
         </div>
-        <!-- end: .content-wrapper -->
+        {{/foreach}}
+        {{/get}}
+
+        {{!-- PROBLEM — статична секція (33%) --}}
+        <div class="grid-33 tablet-grid-100 mobile-grid-100 neiro-problem-wrap">
+            <section class="neiro-problem bg-box">
+                <span class="neiro-problem-emoji">🛑</span>
+                <h2>Stop the Screen-Time Guilt.</h2>
+                <p>Let's be honest: giving your child a tablet often feels like a trade-off
+                    between 15 minutes of peace and their development. But it doesn't have to be.</p>
+                <p>No more zombie mode scrolling. Just active, purposeful movement and logic.</p>
+                <a href="/subscribe" class="neiro-btn-coral">Get Instant Access →</a>
+            </section>
+        </div>
+
     </div>
+    {{!-- END ROW 1 --}}
+
+    {{!-- ==========================================================
+    ROW 2: 3 пости (без тегу featured)
+    ========================================================== --}}
+    <div class="articles grid-posts epcl-row neiro-posts-row">
+        {{#get "posts" filter="tag:-featured" limit="3"}}
+        {{#foreach posts}}
+        {{> "post-card-grid"}}
+        {{/foreach}}
+        {{/get}}
+    </div>
+    {{!-- END ROW 2 --}}
+
+    {{pagination}}
+
     </main>

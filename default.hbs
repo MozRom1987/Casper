@@ -14,11 +14,15 @@
     {{!-- Groovy CSS --}}
     <link rel="stylesheet" type="text/css" href='{{asset "css/plugins.min.css"}}' />
     <link rel="stylesheet" type="text/css" href='{{asset "css/screen.css"}}' />
+    {{!-- NeiroBook overrides --}}
+    <link rel="stylesheet" type="text/css" href='{{asset "css/neiro.css"}}' />
 
     {{!-- Google Fonts: Jost + Outfit --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
 
     {{!-- Tag & category colors --}}
     <style>
@@ -27,16 +31,233 @@
             --epcl-content-background-color: #ffffff;
         }
 
-        {{#get "tags" limit="all"}}
-        {{#foreach tags}}
-        .ctag-{{slug}} { --ctag-color: {{#if accent_color}}{{accent_color}}{{else}}var(--main-color){{/if}}; }
-        .ctag-{{slug}} svg { fill: {{#if accent_color}}{{accent_color}}{{else}}var(--main-color){{/if}} !important; }
-        .ctag-{{slug}} .epcl-category-overlay { background: {{#if accent_color}}{{accent_color}}{{else}}#fff{{/if}}; }
-        .ctag-{{slug}} .epcl-category-overlay:before { background: {{#if accent_color}}{{accent_color}}{{else}}var(--main-color){{/if}}; }
-        .main-article.primary-tag-{{slug}} .epcl-category-overlay { background: {{#if accent_color}}{{accent_color}}{{else}}#fff{{/if}}; }
-        .main-article.primary-tag-{{slug}} .epcl-category-overlay:before { background: {{#if accent_color}}{{accent_color}}{{else}}var(--main-color){{/if}}; }
-        {{/foreach}}
-        {{/get}}
+            {
+                {
+                #get "tags" limit="all"
+            }
+        }
+
+            {
+                {
+                #foreach tags
+            }
+        }
+
+        .ctag- {
+                {
+                slug
+            }
+        }
+
+            {
+            --ctag-color: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            var(--main-color) {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+        .ctag- {
+                {
+                slug
+            }
+        }
+
+        svg {
+            fill: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            var(--main-color) {
+                    {
+                    /if
+                }
+            }
+
+            !important;
+        }
+
+        .ctag- {
+                {
+                slug
+            }
+        }
+
+        .epcl-category-overlay {
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            #fff {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+        .ctag- {
+                {
+                slug
+            }
+        }
+
+        .epcl-category-overlay:before {
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            var(--main-color) {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+        .main-article.primary-tag- {
+                {
+                slug
+            }
+        }
+
+        .epcl-category-overlay {
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            #fff {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+        .main-article.primary-tag- {
+                {
+                slug
+            }
+        }
+
+        .epcl-category-overlay:before {
+            background: {
+                    {
+                    #if accent_color
+                }
+            }
+
+                {
+                    {
+                    accent_color
+                }
+            }
+
+                {
+                    {
+                    else
+                }
+            }
+
+            var(--main-color) {
+                    {
+                    /if
+                }
+            }
+
+            ;
+        }
+
+            {
+                {
+                /foreach
+            }
+        }
+
+            {
+                {
+                /get
+            }
+        }
 
         #header.is-sticky div.menu-wrapper .bg-box {
             box-shadow: none;
@@ -89,8 +310,12 @@
         <header id="header" class="enable-sticky">
 
             <div class="menu-mobile">
-                <svg class="icon ularge open"><use xlink:href="#menu-icon"></use></svg>
-                <svg class="icon ularge close"><use xlink:href="#close-icon"></use></svg>
+                <svg class="icon ularge open">
+                    <use xlink:href="#menu-icon"></use>
+                </svg>
+                <svg class="icon ularge close">
+                    <use xlink:href="#close-icon"></use>
+                </svg>
             </div>
 
             <div class="menu-wrapper">
@@ -109,14 +334,17 @@
 
                         {{!-- Search --}}
                         <a href="javascript:void(0)" data-ghost-search class="epcl-search-button button circle dark">
-                            <svg class="icon"><use xlink:href="#search-icon"></use></svg>
+                            <svg class="icon">
+                                <use xlink:href="#search-icon"></use>
+                            </svg>
                         </a>
 
                         {{!-- Desktop nav --}}
                         <nav class="main-nav">
                             <ul class="menu">
                                 {{#foreach @site.navigation}}
-                                <li class="nav-{{slug}}{{#if current}} current-menu-item{{/if}}"><a href="{{url}}">{{label}}</a></li>
+                                <li class="nav-{{slug}}{{#if current}} current-menu-item{{/if}}"><a
+                                        href="{{url}}">{{label}}</a></li>
                                 {{/foreach}}
                                 <li class="nav-login">
                                     {{#unless @member}}
@@ -131,8 +359,12 @@
                         {{!-- Social buttons --}}
                         {{#if @site.facebook}}
                         <div class="epcl-social-buttons fill-color hide-on-tablet hide-on-mobile hide-on-desktop-sm">
-                            {{#if @site.facebook}}<a href="https://www.facebook.com/{{@site.facebook}}" class="facebook" target="_blank" rel="nofollow noopener"><i class="fa fa-facebook"></i></a>{{/if}}
-                            {{#if @site.twitter}}<a href="https://twitter.com/{{@site.twitter}}" class="twitter" target="_blank" rel="nofollow noopener"><svg><use xlink:href="#twitter-icon"></use></svg></a>{{/if}}
+                            {{#if @site.facebook}}<a href="https://www.facebook.com/{{@site.facebook}}" class="facebook"
+                                target="_blank" rel="nofollow noopener"><i class="fa fa-facebook"></i></a>{{/if}}
+                            {{#if @site.twitter}}<a href="https://twitter.com/{{@site.twitter}}" class="twitter"
+                                target="_blank" rel="nofollow noopener"><svg>
+                                    <use xlink:href="#twitter-icon"></use>
+                                </svg></a>{{/if}}
                             <a href="{{@site.url}}/rss/" class="rss" target="_blank"><i class="fa fa-rss"></i></a>
                         </div>
                         {{/if}}
@@ -179,7 +411,8 @@
                             <div class="info">
                                 {{#if feature_image}}
                                 <a href="{{url}}" class="thumb main-effect epcl-loader">
-                                    <span class="fullimage cover lazy" data-src='{{img_url feature_image size="s"}}'></span>
+                                    <span class="fullimage cover lazy"
+                                        data-src='{{img_url feature_image size="s"}}'></span>
                                     <span class="epcl-number">{{@number}}</span>
                                 </a>
                                 {{/if}}
@@ -201,7 +434,9 @@
                         <div class="widget_tag_cloud">
                             {{#foreach tags}}
                             <a href="{{url}}" class="ctag ctag-{{slug}}" data-id="ctag-{{slug}}">
-                                <svg><use xlink:href="#tag-decoration"></use></svg>{{name}}
+                                <svg>
+                                    <use xlink:href="#tag-decoration"></use>
+                                </svg>{{name}}
                             </a>
                             {{/foreach}}
                         </div>
@@ -217,9 +452,12 @@
                 <h4 class="title large">Subscribe to our Newsletter</h4>
                 <form class="subscribe-form" data-members-form="subscribe">
                     <div class="form-group">
-                        <input type="email" name="email" class="inputbox rounded large" required placeholder="Enter your email address" data-members-email />
+                        <input type="email" name="email" class="inputbox rounded large" required
+                            placeholder="Enter your email address" data-members-email />
                         <button type="submit" class="submit absolute epcl-button">
-                            Subscribe <svg class="icon"><use xlink:href="#send-email"></use></svg>
+                            Subscribe <svg class="icon">
+                                <use xlink:href="#send-email"></use>
+                            </svg>
                         </button>
                     </div>
                     <p class="success-message"><i class="fa fa-check"></i> You're subscribed!</p>
@@ -229,7 +467,8 @@
 
             {{!-- Copyright --}}
             <div class="published textcenter" style="padding: 20px 0;">
-                <p>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>. Powered by <a href="https://ghost.org" target="_blank">Ghost</a>.</p>
+                <p>&copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>. Powered by <a
+                        href="https://ghost.org" target="_blank">Ghost</a>.</p>
             </div>
 
             {{!-- Secondary navigation --}}

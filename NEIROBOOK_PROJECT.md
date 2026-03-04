@@ -435,18 +435,22 @@ var theme_config = {
 ### 🔴 Фаза 1 — MVP (запуск продажів)
 **Ціль:** сайт онлайн, можна приймати оплату.
 
-- [ ] Запустити Docker локально (`docker-compose up -d`)
+- [x] Запустити Docker локально (`docker-compose up -d`) ✅
 - [ ] Встановити залежності (`yarn install`)
-- [ ] Адаптувати `default.hbs` — новий header NeiroBook (Logo + "Sign In" + "Get Access")
-- [ ] Оновити палітру в `screen.css` (Teal / Coral / Sand / Mustard)
-- [ ] Створити `assets/css/neiro.css` з CSS-змінними NeiroBook
-- [ ] Створити `partials/hero.hbs`
-- [ ] Створити `partials/faq.hbs` (accordion)
-- [ ] Створити `page-landing.hbs` з усіма 8 секціями
-- [ ] Налаштувати Ghost: один тариф "Academy Access"
+- [x] Адаптувати `default.hbs` — Teal navbar, Coral "Get Access" CTA, "Sign In", прибрати соцмережі ✅
+- [x] Оновити палітру — `--epcl-background-color` змінено з `#54CBCA` на `#004D40` ✅
+- [x] Створити `assets/css/neiro.css` з CSS-змінними + navbar + footer стилями ✅
+- [x] Footer: замінено форму підписки на NeiroBook Final CTA + preview lessons + tag pills ✅
+- [x] HERO (66%) + PROBLEM (33%) в `index.hbs` — Row 1 готово ✅
+- [ ] `index.hbs` — Row 3: PILLARS (3 картки Motor/Cognitive/Breathing) 🔄 NEXT
+- [ ] `index.hbs` — WHAT'S INSIDE (4 іконки)
+- [ ] `index.hbs` — BONUS секція (Gold)
+- [ ] `index.hbs` — SOCIAL PROOF (цитата Sarah M.)
+- [ ] `index.hbs` — FAQ (accordion)
+- [ ] Створити `page-members.hbs`
+- [ ] Налаштувати Ghost: тарифи "Academy Full Access" + "Activity Cards Pack"
 - [ ] Підключити Stripe до Ghost Portal (після активації)
 - [ ] Налаштувати redirect після оплати → `/welcome`
-- [ ] Верстка сторінок `/subscribe`, `/thank-you` (базово через Ghost Portal)
 - [ ] Зібрати ZIP (`yarn zip`) і завантажити в Ghost Admin
 - [ ] Перевірити на реальному VPS
 

@@ -1,282 +1,218 @@
-﻿{{!< default}} {{!-- NeiroBook Landing Page — neirobook_casper branch --}}
-    {{!--================================================HERO: Original Casper full-width cover with
-    gradient================================================--}} <div
-    class="site-header-content outer{{#match @custom.header_style " Left aligned"}} left-aligned{{/match}}{{#unless
-    @custom.show_publication_cover}}{{#match @custom.header_style " Hidden" }} no-content{{/match}}{{/unless}}">
+﻿{{!< default}}
 
+{{!-- ================================================
+     HERO: Original Casper full-width cover
+     ================================================ --}}
+<div class="site-header-content outer{{#match @custom.header_style " Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style " Hidden"}} no-content{{/match}}{{/unless}}">
     {{#if @custom.show_publication_cover}}
-    {{#if @site.cover_image}}
-    <img class="site-header-cover" srcset="{{img_url @site.cover_image size=" s"}} 300w, {{img_url @site.cover_image
-        size="m" }} 600w, {{img_url @site.cover_image size="l" }} 1000w, {{img_url @site.cover_image size="xl" }} 2000w"
-        sizes="100vw" src="{{img_url @site.cover_image size=" xl"}}" alt="{{@site.title}}" />
+        {{#if @site.cover_image}}
+            <img class="site-header-cover"
+                srcset="{{img_url @site.cover_image size="s"}} 300w, {{img_url @site.cover_image size="m"}} 600w, {{img_url @site.cover_image size="l"}} 1000w, {{img_url @site.cover_image size="xl"}} 2000w"
+                sizes="100vw"
+                src="{{img_url @site.cover_image size="xl"}}"
+                alt="{{@site.title}}"
+            />
+        {{/if}}
     {{/if}}
-    {{/if}}
-
     {{#match @custom.header_style "!=" "Hidden"}}
-    <div class="site-header-inner inner">
-        {{#match @custom.navigation_layout "Logo on cover"}}
-        {{#if @site.logo}}
-        <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
-        {{else}}
-        <h1 class="site-title">{{@site.title}}</h1>
-        {{/if}}
-        {{/match}}
-        {{#if @site.description}}
-        <p class="site-description">{{@site.description}}</p>
-        {{/if}}
-    </div>
+        <div class="site-header-inner inner">
+            {{#match @custom.navigation_layout "Logo on cover"}}
+                {{#if @site.logo}}
+                    <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+                {{else}}
+                    <h1 class="site-title">{{@site.title}}</h1>
+                {{/if}}
+            {{/match}}
+            {{#if @site.description}}
+                <p class="site-description">{{@site.description}}</p>
+            {{/if}}
+        </div>
     {{/match}}
+</div>
 
-    </div>
-
-    {{!-- ================================================
-    MAIN CONTENT
-    ================================================ --}}
-    <main id="site-main" class="site-main outer">
-        <div class="inner">
-
-            {{!-- ================================================
-            PROBLEM SECTION (replaces "Start here")
-            Image left + Text right — prominent card
-            ================================================ --}}
-            <section class="neiro-problem-section">
-                <div class="neiro-problem-card">
-
-                    <div class="neiro-problem-visual">
-                        <div class="neiro-problem-img-wrap">
-                            <div class="neiro-problem-screen">
-                                <div class="neiro-screen-icon">📱</div>
-                                <div class="neiro-screen-bars">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="neiro-screen-label">50 min today</div>
-                            </div>
-                            <div class="neiro-problem-badge">🛑 Screen Time</div>
-                        </div>
-                    </div>
-
-                    <div class="neiro-problem-text">
-                        <span class="neiro-eyebrow">The Problem</span>
-                        <h2>Stop the Screen-Time Guilt.</h2>
-                        <p>Let's be honest: giving your child a tablet often feels like a trade-off between 15 minutes
-                            of peace and their development. But it doesn't have to be.</p>
-                        <p>No more zombie mode scrolling. Just active, purposeful movement and logic — designed for
-                            brains ages 2–5.</p>
-                        <a href="/subscribe" class="neiro-btn-coral">Start Free Today &rarr;</a>
-                    </div>
-
-                </div>
-            </section>
-
-            {{!-- ================================================
-            THREE PILLARS: Post-card style (image + title + text + shadow)
-            ================================================ --}}
-            <section class="neiro-pillars-section">
-                <h2 class="neiro-section-title">Three Pillars of Child Development</h2>
-                <p class="neiro-section-subtitle">Every activity targets one or more of these core growth areas.</p>
-
-                <div class="post-feed neiro-pillar-feed">
-
-                    <article class="post-card neiro-pillar-card-item">
-                        <div class="post-card-image-link neiro-pillar-img neiro-pillar-motor" aria-hidden="true">
-                            <span class="neiro-pillar-emoji">🏃</span>
-                        </div>
-                        <div class="post-card-content">
-                            <div class="post-card-content-link">
-                                <header class="post-card-header">
-                                    <div class="post-card-tags">
-                                        <span class="post-card-primary-tag">Motor</span>
-                                    </div>
-                                    <h2 class="post-card-title">Motor &amp; Movement</h2>
-                                </header>
-                                <div class="post-card-excerpt">52 activities that build coordination, balance, and gross
-                                    motor skills through dynamic play.</div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="post-card neiro-pillar-card-item">
-                        <div class="post-card-image-link neiro-pillar-img neiro-pillar-cognitive" aria-hidden="true">
-                            <span class="neiro-pillar-emoji">🧠</span>
-                        </div>
-                        <div class="post-card-content">
-                            <div class="post-card-content-link">
-                                <header class="post-card-header">
-                                    <div class="post-card-tags">
-                                        <span class="post-card-primary-tag">Cognitive</span>
-                                    </div>
-                                    <h2 class="post-card-title">Cognitive Challenges</h2>
-                                </header>
-                                <div class="post-card-excerpt">29 games that sharpen focus, memory, and problem-solving
-                                    — no screens required.</div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="post-card neiro-pillar-card-item">
-                        <div class="post-card-image-link neiro-pillar-img neiro-pillar-breathing" aria-hidden="true">
-                            <span class="neiro-pillar-emoji">❤️</span>
-                        </div>
-                        <div class="post-card-content">
-                            <div class="post-card-content-link">
-                                <header class="post-card-header">
-                                    <div class="post-card-tags">
-                                        <span class="post-card-primary-tag">Breathing</span>
-                                    </div>
-                                    <h2 class="post-card-title">Breathing &amp; Calm</h2>
-                                </header>
-                                <div class="post-card-excerpt">26 breathing and mindfulness exercises for
-                                    self-regulation and emotional balance.</div>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    {{!-- Section transition: white → sand --}}
-    <div class="neiro-gradient-divider"></div>
+{{!-- ================================================
+     MAIN CONTENT
+     ================================================ --}}
+<main id="site-main" class="site-main outer">
+<div class="inner">
 
     {{!-- ================================================
-    WHAT'S INSIDE: 4 smaller post-card style blocks
-    ================================================ --}}
-    <section class="neiro-inside-section outer">
-        <div class="inner">
-            <h2 class="neiro-section-title">What's Inside the Academy</h2>
-            <div class="post-feed neiro-inside-feed">
+         PROBLEM SECTION
+         Imitation of "Start here" card from Casper demo
+         ================================================ --}}
+    <section class="neiro-problem-section">
+        <div class="neiro-problem-card">
 
-                <article class="post-card neiro-inside-item">
-                    <div class="post-card-content">
-                        <div class="post-card-content-link">
-                            <header class="post-card-header">
-                                <span class="neiro-inside-icon">🎬</span>
-                                <h3 class="post-card-title">117+ Videos</h3>
-                            </header>
-                            <div class="post-card-excerpt">Short, engaging activities your child can do right now.</div>
-                        </div>
+            <div class="neiro-problem-visual">
+                <div class="neiro-screen-mockup">
+                    <div class="neiro-screen-top">
+                        <span class="neiro-screen-dot"></span>
+                        <span class="neiro-screen-dot"></span>
+                        <span class="neiro-screen-dot"></span>
                     </div>
-                </article>
-
-                <article class="post-card neiro-inside-item">
-                    <div class="post-card-content">
-                        <div class="post-card-content-link">
-                            <header class="post-card-header">
-                                <span class="neiro-inside-icon">⚡</span>
-                                <h3 class="post-card-title">Zero Prep</h3>
-                            </header>
-                            <div class="post-card-excerpt">No materials, no setup. Just press play and join in.</div>
-                        </div>
+                    <div class="neiro-screen-content">
+                        <div class="neiro-screen-app">📱</div>
+                        <div class="neiro-screen-time">4h 23m today</div>
+                        <div class="neiro-screen-bar"><span style="width:78%"></span></div>
+                        <div class="neiro-screen-bar"><span style="width:55%"></span></div>
+                        <div class="neiro-screen-bar"><span style="width:90%"></span></div>
                     </div>
-                </article>
-
-                <article class="post-card neiro-inside-item">
-                    <div class="post-card-content">
-                        <div class="post-card-content-link">
-                            <header class="post-card-header">
-                                <span class="neiro-inside-icon">🧒</span>
-                                <h3 class="post-card-title">Independent Play</h3>
-                            </header>
-                            <div class="post-card-excerpt">Designed for ages 2–5 to follow along independently.</div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post-card neiro-inside-item">
-                    <div class="post-card-content">
-                        <div class="post-card-content-link">
-                            <header class="post-card-header">
-                                <span class="neiro-inside-icon">♾️</span>
-                                <h3 class="post-card-title">Lifetime Access</h3>
-                            </header>
-                            <div class="post-card-excerpt">Pay once. Access forever. New content added regularly.</div>
-                        </div>
-                    </div>
-                </article>
-
+                </div>
+                <div class="neiro-problem-badge">🛑 Average Screen Time · Age 2–5</div>
             </div>
-        </div>
-    </section>
 
-    {{!-- Section transition: sand → white --}}
-    <div class="neiro-gradient-divider neiro-gradient-reverse"></div>
-
-    {{!-- ================================================
-    BONUS: Mustard Gold
-    ================================================ --}}
-    <section class="neiro-bonus outer">
-        <div class="inner">
-            <div class="neiro-bonus-card">
-                <div class="neiro-bonus-left">
-                    <span class="neiro-bonus-label">🎁 FREE BONUS</span>
-                    <h2>30+ Activity Cards — Included With Your Order</h2>
-                    <p>Printable, full-color cards for offline play. Each card covers one activity so kids can follow
-                        along without a screen.</p>
-                </div>
-                <div class="neiro-bonus-right">
-                    <a href="/subscribe" class="neiro-btn-coral">Claim Your Bonus &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{!-- ================================================
-    SOCIAL PROOF: Sarah M.
-    ================================================ --}}
-    <section class="neiro-social-proof outer">
-        <div class="inner">
-            <div class="neiro-quote-card">
-                <div class="neiro-stars">⭐⭐⭐⭐⭐</div>
-                <blockquote>
-                    "My daughter asks to do her 'brain games' every morning now. She went from constant meltdowns to
-                    being able to self-regulate in just three weeks. This is not just an app — it's a complete shift in
-                    how we start our day."
-                </blockquote>
-                <cite>— Sarah M., mom of a 4-year-old</cite>
-            </div>
-        </div>
-    </section>
-
-    {{!-- Section transition --}}
-    <div class="neiro-gradient-divider"></div>
-
-    {{!-- ================================================
-    FAQ accordion
-    ================================================ --}}
-    <section class="neiro-faq outer">
-        <div class="inner">
-            <h2 class="neiro-section-title">Frequently Asked Questions</h2>
-
-            <details class="neiro-faq-item">
-                <summary>What age is NeiroBook designed for?</summary>
-                <div class="neiro-faq-body">
-                    <p>NeiroBook is designed for children ages 2–5. All activities are age-appropriate and can be done
-                        independently or with a parent. No reading required — kids simply follow along with the video.
-                    </p>
-                </div>
-            </details>
-
-            <details class="neiro-faq-item">
-                <summary>Do I need any special equipment?</summary>
-                <div class="neiro-faq-body">
-                    <p>No equipment needed! All activities use only your child's body and everyday household items. The
-                        focus is on movement, breathing, and cognitive play — not toys or materials.</p>
-                </div>
-            </details>
-
-            <details class="neiro-faq-item">
-                <summary>How is this different from YouTube videos?</summary>
-                <div class="neiro-faq-body">
-                    <p>YouTube is passive entertainment. NeiroBook is structured, purposeful movement with a
-                        developmental goal behind every activity. No ads, no rabbit holes — just focused learning
-                        through play.</p>
-                </div>
-            </details>
-
-            <div class="neiro-faq-cta">
+            <div class="neiro-problem-text">
+                <span class="neiro-eyebrow">The Problem</span>
+                <h2>Stop the Screen-Time Guilt.</h2>
+                <p>Giving your child a tablet feels like a trade-off between 15 minutes of peace and their development. But it doesn't have to be that way.</p>
+                <p>No more zombie-mode scrolling. Just active, purposeful movement and play — designed for brains ages 2–5.</p>
                 <a href="/subscribe" class="neiro-btn-coral">Get Instant Access &rarr;</a>
             </div>
+
         </div>
     </section>
+
+    {{!-- ================================================
+         ACADEMY SECTION: Pillars + What's Inside in ONE block
+         ================================================ --}}
+    <section class="neiro-academy-section">
+
+        {{!-- THREE PILLARS --}}
+        <h2 class="neiro-section-title">Three Pillars of Child Development</h2>
+        <p class="neiro-section-subtitle">Every activity targets one or more of these core growth areas.</p>
+
+        <div class="neiro-grid-3">
+
+            <div class="neiro-pillar-item">
+                <div class="neiro-pillar-top neiro-pillar-motor">
+                    <span class="neiro-pillar-emoji">🏃</span>
+                </div>
+                <div class="neiro-pillar-body">
+                    <span class="neiro-tag-label">Motor</span>
+                    <h3>Motor &amp; Movement</h3>
+                    <p>52 activities that build coordination, balance, and gross motor skills through dynamic play.</p>
+                </div>
+            </div>
+
+            <div class="neiro-pillar-item">
+                <div class="neiro-pillar-top neiro-pillar-cognitive">
+                    <span class="neiro-pillar-emoji">🧠</span>
+                </div>
+                <div class="neiro-pillar-body">
+                    <span class="neiro-tag-label">Cognitive</span>
+                    <h3>Cognitive Challenges</h3>
+                    <p>29 games that sharpen focus, memory, and problem-solving — no screens required.</p>
+                </div>
+            </div>
+
+            <div class="neiro-pillar-item">
+                <div class="neiro-pillar-top neiro-pillar-breathing">
+                    <span class="neiro-pillar-emoji">❤️</span>
+                </div>
+                <div class="neiro-pillar-body">
+                    <span class="neiro-tag-label">Breathing</span>
+                    <h3>Breathing &amp; Calm</h3>
+                    <p>26 breathing and mindfulness exercises for self-regulation and emotional balance.</p>
+                </div>
+            </div>
+
+        </div>
+
+        {{!-- WHAT'S INSIDE --}}
+        <h2 class="neiro-section-title neiro-inside-title">What's Inside the Academy</h2>
+
+        <div class="neiro-grid-4">
+
+            <div class="neiro-inside-card">
+                <span class="neiro-inside-icon">🎬</span>
+                <h4>117+ Videos</h4>
+                <p>Short, engaging activities your child can do right now.</p>
+            </div>
+
+            <div class="neiro-inside-card">
+                <span class="neiro-inside-icon">⚡</span>
+                <h4>Zero Prep</h4>
+                <p>No materials, no setup. Just press play and join in.</p>
+            </div>
+
+            <div class="neiro-inside-card">
+                <span class="neiro-inside-icon">🧒</span>
+                <h4>Independent Play</h4>
+                <p>Designed for ages 2–5 to follow along independently.</p>
+            </div>
+
+            <div class="neiro-inside-card">
+                <span class="neiro-inside-icon">♾️</span>
+                <h4>Lifetime Access</h4>
+                <p>Pay once. Access forever. New content added regularly.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+</main>
+
+{{!-- ================================================
+     BONUS: Mustard Gold (full-width, outside .inner)
+     ================================================ --}}
+<section class="neiro-bonus outer">
+    <div class="inner">
+        <div class="neiro-bonus-card">
+            <div class="neiro-bonus-left">
+                <span class="neiro-bonus-label">🎁 FREE BONUS</span>
+                <h2>30+ Activity Cards — Included With Your Order</h2>
+                <p>Printable, full-color cards for offline play. Each card covers one activity so kids can follow along without a screen.</p>
+            </div>
+            <div class="neiro-bonus-right">
+                <a href="/subscribe" class="neiro-btn-coral">Claim Your Bonus &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!-- SOCIAL PROOF --}}
+<section class="neiro-social-proof outer">
+    <div class="inner">
+        <div class="neiro-quote-card">
+            <div class="neiro-stars">⭐⭐⭐⭐⭐</div>
+            <blockquote>
+                "My daughter asks to do her 'brain games' every morning now. She went from constant meltdowns to being able to self-regulate in just three weeks. This is not just an app — it's a complete shift in how we start our day."
+            </blockquote>
+            <cite>— Sarah M., mom of a 4-year-old</cite>
+        </div>
+    </div>
+</section>
+
+{{!-- FAQ --}}
+<section class="neiro-faq outer">
+    <div class="inner">
+        <h2 class="neiro-section-title">Frequently Asked Questions</h2>
+
+        <details class="neiro-faq-item">
+            <summary>What age is NeiroBook designed for?</summary>
+            <div class="neiro-faq-body">
+                <p>NeiroBook is designed for children ages 2–5. All activities are age-appropriate and can be done independently or with a parent. No reading required — kids simply follow along with the video.</p>
+            </div>
+        </details>
+
+        <details class="neiro-faq-item">
+            <summary>Do I need any special equipment?</summary>
+            <div class="neiro-faq-body">
+                <p>No equipment needed! All activities use only your child's body and everyday household items. The focus is on movement, breathing, and cognitive play — not toys or materials.</p>
+            </div>
+        </details>
+
+        <details class="neiro-faq-item">
+            <summary>How is this different from YouTube videos?</summary>
+            <div class="neiro-faq-body">
+                <p>YouTube is passive entertainment. NeiroBook is structured, purposeful movement with a developmental goal behind every activity. No ads, no rabbit holes — just focused learning through play.</p>
+            </div>
+        </details>
+
+        <div class="neiro-faq-cta">
+            <a href="/subscribe" class="neiro-btn-coral">Get Instant Access &rarr;</a>
+        </div>
+    </div>
+</section>

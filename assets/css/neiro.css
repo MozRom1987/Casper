@@ -1,23 +1,38 @@
 ﻿/* ================================================================
-   NeiroBook Theme Overrides — Casper base
-   Branch: neirobook_casper
+   NeiroBook — Casper theme overrides  |  branch: neirobook_casper
    ================================================================ */
 
-/* ================================================================
-   CASPER NAVBAR — NeiroBook
-   ================================================================ */
-
-.gh-head {
-    background: var(--neiro-teal) !important;
-    border-bottom: none !important;
+/* ----------------------------------------------------------------
+   CSS VARIABLES
+   ---------------------------------------------------------------- */
+:root {
+    --neiro-teal:  #004D40;
+    --neiro-coral: #FF7043;
+    --neiro-gold:  #FFB300;
+    --neiro-sand:  #F0F0EC;
+    --neiro-white: #ffffff;
+    --neiro-text:  #1a1a1a;
 }
 
-.gh-head-logo,
-.gh-head-menu .nav a,
-.gh-head-menu a {
-    color: #fff !important;
+/* ----------------------------------------------------------------
+   BODY & TYPOGRAPHY
+   ---------------------------------------------------------------- */
+body {
+    background: var(--neiro-white);
+    font-family: 'Inter', sans-serif;
 }
 
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--neiro-teal);
+}
+
+/* ----------------------------------------------------------------
+   NAVBAR — minimal overrides, no forced background
+   Keep Casper default white header, just style buttons
+   ---------------------------------------------------------------- */
+
+/* Get Access button - coral CTA */
 .neiro-nav-get-access {
     display: inline-block;
     background: var(--neiro-coral);
@@ -27,81 +42,62 @@
     font-weight: 700;
     font-size: 14px;
     text-decoration: none !important;
-    transition: background 200ms ease, transform 200ms ease;
+    transition: background 200ms, transform 200ms;
     margin-right: 8px;
 }
-
 .neiro-nav-get-access:hover {
-    background: #e8603a;
+    background: #e05a34;
     transform: translateY(-1px);
 }
 
+/* Sign In link */
 .neiro-nav-sign-in {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--neiro-teal) !important;
     font-size: 14px;
-    text-decoration: underline !important;
+    font-weight: 500;
+    text-decoration: none !important;
+    opacity: 0.75;
+    transition: opacity 150ms;
 }
+.neiro-nav-sign-in:hover { opacity: 1; }
 
-.neiro-nav-sign-in:hover {
-    color: #fff !important;
-}
-
-.gh-icon-btn svg {
-    stroke: #fff !important;
-}
-
-.gh-burger::before,
-.gh-burger::after {
-    background: #fff !important;
-}
-
-/* ================================================================
-   GLOBAL
-   ================================================================ */
-
-body {
-    background-color: var(--neiro-sand) !important;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    color: var(--neiro-teal);
-}
-
-.site-section {
-    padding: 60px 0;
-}
-
-/* ================================================================
-   CTA BUTTON
-   ================================================================ */
-
+/* ----------------------------------------------------------------
+   CTA BUTTON (global)
+   ---------------------------------------------------------------- */
 .neiro-btn-coral {
     display: inline-block;
     background: var(--neiro-coral);
     color: #fff !important;
     padding: 14px 36px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 700;
     font-size: 16px;
     text-decoration: none !important;
-    transition: background 250ms ease, transform 200ms ease, box-shadow 250ms ease;
+    transition: background 200ms, transform 200ms, box-shadow 200ms;
     border: none;
     cursor: pointer;
 }
-
 .neiro-btn-coral:hover {
-    background: #e8603a;
+    background: #e05a34;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 112, 67, 0.35);
+    box-shadow: 0 8px 24px rgba(255,112,67,0.35);
 }
 
-/* ================================================================
-   EYEBROW LABEL
-   ================================================================ */
-
+/* ----------------------------------------------------------------
+   SECTION TITLES
+   ---------------------------------------------------------------- */
+.neiro-section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 10px;
+    color: var(--neiro-teal);
+}
+.neiro-section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin: 0 0 36px;
+}
 .neiro-eyebrow {
     display: inline-block;
     font-size: 12px;
@@ -109,136 +105,108 @@ h4 {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--neiro-coral);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+}
+.neiro-tag-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neiro-coral);
+    margin-bottom: 6px;
 }
 
-/* ================================================================
-   SECTION TITLES
-   ================================================================ */
-
-.neiro-section-title {
-    text-align: center;
-    color: var(--neiro-teal);
-    font-size: 2rem;
-    margin-bottom: 12px;
-    margin-top: 0;
-}
-
-.neiro-section-subtitle {
-    text-align: center;
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 40px;
-}
-
-/* ================================================================
-   GRADIENT DIVIDERS (smooth white <-> sand transitions)
-   ================================================================ */
-
-.neiro-gradient-divider {
-    height: 80px;
-    background: linear-gradient(to bottom, #ffffff 0%, var(--neiro-sand) 100%);
-    pointer-events: none;
-}
-
-.neiro-gradient-divider.neiro-gradient-reverse {
-    background: linear-gradient(to bottom, var(--neiro-sand) 0%, #ffffff 100%);
-}
-
-/* ================================================================
-   PROBLEM SECTION (replaces "Start here")
-   ================================================================ */
-
+/* ----------------------------------------------------------------
+   PROBLEM SECTION
+   Styled like a "featured" Casper card: image left + text right
+   ---------------------------------------------------------------- */
 .neiro-problem-section {
-    margin: 48px 0 0;
+    margin-top: 48px;
 }
 
 .neiro-problem-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
-    min-height: 380px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    min-height: 360px;
 }
 
-/* Left: visual/image side */
+/* LEFT: dark teal visual panel */
 .neiro-problem-visual {
     background: var(--neiro-teal);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px 40px;
-    position: relative;
-}
-
-.neiro-problem-img-wrap {
-    position: relative;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    padding: 40px 32px;
+    gap: 24px;
 }
 
-.neiro-problem-screen {
-    background: #1a1a2e;
-    border-radius: 20px;
-    padding: 28px 24px 20px;
-    width: 180px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+/* Screen mockup */
+.neiro-screen-mockup {
+    background: #0d1117;
+    border-radius: 14px;
+    width: 220px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
-
-.neiro-screen-icon {
-    font-size: 3rem;
-    margin-bottom: 12px;
-    filter: grayscale(0.3);
-}
-
-.neiro-screen-bars {
+.neiro-screen-top {
+    background: #1c2333;
+    padding: 10px 14px;
     display: flex;
     gap: 6px;
-    justify-content: center;
-    margin-bottom: 10px;
+    align-items: center;
 }
-
-.neiro-screen-bars span {
-    display: block;
-    height: 6px;
-    border-radius: 3px;
-    background: rgba(255, 255, 255, 0.15);
+.neiro-screen-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
 }
-
-.neiro-screen-bars span:nth-child(1) {
-    width: 60px;
+.neiro-screen-content {
+    padding: 20px 18px 24px;
+    text-align: center;
 }
-
-.neiro-screen-bars span:nth-child(2) {
-    width: 45px;
+.neiro-screen-app {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
 }
-
-.neiro-screen-bars span:nth-child(3) {
-    width: 52px;
-}
-
-.neiro-screen-label {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
+.neiro-screen-time {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
     letter-spacing: 0.05em;
+    margin-bottom: 14px;
+}
+.neiro-screen-bar {
+    background: rgba(255,255,255,0.08);
+    height: 7px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+.neiro-screen-bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #FF7043, #FF5722);
+    border-radius: 4px;
 }
 
+/* Badge */
 .neiro-problem-badge {
     background: var(--neiro-coral);
     color: #fff;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     padding: 8px 18px;
     border-radius: 999px;
     letter-spacing: 0.02em;
+    text-align: center;
 }
 
-/* Right: text side */
+/* RIGHT: text panel */
 .neiro-problem-text {
     background: #fff;
     padding: 48px 44px;
@@ -246,194 +214,170 @@ h4 {
     flex-direction: column;
     justify-content: center;
 }
-
 .neiro-problem-text h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
     line-height: 1.25;
-    margin-bottom: 16px;
-    margin-top: 8px;
+    margin: 8px 0 16px;
     color: var(--neiro-teal);
 }
-
 .neiro-problem-text p {
     color: #555;
     font-size: 15px;
     line-height: 1.75;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
 }
-
 .neiro-problem-text .neiro-btn-coral {
     align-self: flex-start;
     margin-top: 20px;
 }
 
-/* ================================================================
-   PILLARS — Post-card style (3 cards, image top + text)
-   ================================================================ */
-
-.neiro-pillars-section {
+/* ----------------------------------------------------------------
+   ACADEMY SECTION: Pillars + What's Inside in ONE block
+   Smooth gradient fade in / fade out using ::before and ::after
+   ---------------------------------------------------------------- */
+.neiro-academy-section {
+    position: relative;
+    background: var(--neiro-sand);
     margin-top: 64px;
-    padding-bottom: 8px;
+    padding: 64px 0 72px;
+    /* full-bleed beyond .inner container */
+    margin-left:  -max(4vw, 20px);
+    margin-right: -max(4vw, 20px);
+    padding-left:  max(4vw, 20px);
+    padding-right: max(4vw, 20px);
 }
 
-/* Make post-feed work as 3-col grid for pillars */
-.neiro-pillars-section .post-feed,
-.neiro-pillars-section .post-feed.neiro-pillar-feed,
-.neiro-pillar-feed {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 32px !important;
-    margin: 0 !important;
-    max-width: 100%;
+/* Smooth gradient TOP: white → sand */
+.neiro-academy-section::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--neiro-sand) 100%);
+    pointer-events: none;
 }
 
-.neiro-pillar-card-item {
-    border-radius: 16px !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07) !important;
-    transition: transform 250ms ease, box-shadow 250ms ease !important;
-    background: #fff !important;
-    margin: 0 !important;
-    flex: none !important;
-    min-width: 0 !important;
-    width: auto !important;
+/* Smooth gradient BOTTOM: sand → white */
+.neiro-academy-section::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--neiro-sand) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
 }
 
-.neiro-pillar-card-item:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: 0 16px 48px rgba(0, 77, 64, 0.14) !important;
+/* --- PILLARS GRID (3-column, no Casper interference) --- */
+.neiro-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 60px;
 }
 
-/* Pillar "image" area — coloured block with emoji */
-.neiro-pillar-img {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 200px !important;
-    min-height: 200px !important;
-    border-radius: 0 !important;
-    text-decoration: none !important;
-    width: 100% !important;
-    overflow: hidden !important;
+.neiro-pillar-item {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
-.neiro-pillar-motor {
-    background: linear-gradient(135deg, #004D40, #00796B);
+.neiro-pillar-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,77,64,0.15);
 }
 
-.neiro-pillar-cognitive {
-    background: linear-gradient(135deg, #1565C0, #0288D1);
+/* Coloured top block with emoji */
+.neiro-pillar-top {
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.neiro-pillar-breathing {
-    background: linear-gradient(135deg, #AD1457, #E91E63);
-}
+.neiro-pillar-motor     { background: linear-gradient(135deg, #004D40, #00897B); }
+.neiro-pillar-cognitive { background: linear-gradient(135deg, #1565C0, #039BE5); }
+.neiro-pillar-breathing { background: linear-gradient(135deg, #880E4F, #E91E63); }
 
 .neiro-pillar-emoji {
     font-size: 4rem;
     line-height: 1;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     transition: transform 300ms ease;
 }
-
-.neiro-pillar-card-item:hover .neiro-pillar-emoji {
+.neiro-pillar-item:hover .neiro-pillar-emoji {
     transform: scale(1.12) rotate(-5deg);
 }
 
-.neiro-pillar-card-item .post-card-primary-tag {
-    color: var(--neiro-coral) !important;
-    font-weight: 600 !important;
-    font-size: 12px !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
+/* Text content */
+.neiro-pillar-body {
+    padding: 20px 22px 24px;
+}
+.neiro-pillar-body h3 {
+    font-size: 1.1rem;
+    color: var(--neiro-teal);
+    margin: 4px 0 8px;
+}
+.neiro-pillar-body p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
 }
 
-.neiro-pillar-card-item .post-card-title {
-    color: var(--neiro-teal) !important;
-    font-size: 1.25rem !important;
-    margin-top: 8px !important;
+/* --- WHAT'S INSIDE GRID (4-column) --- */
+.neiro-inside-title {
+    margin-top: 12px !important;
+    margin-bottom: 28px !important;
 }
 
-.neiro-pillar-card-item .post-card-excerpt {
-    color: #666 !important;
-    font-size: 14px !important;
-    line-height: 1.65 !important;
+.neiro-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-/* ================================================================
-   WHAT'S INSIDE — 4 smaller post-card style blocks
-   ================================================================ */
-
-.neiro-inside-section {
-    background: var(--neiro-sand);
-    padding: 64px 0;
-}
-
-.neiro-inside-section .neiro-section-title {
-    margin-bottom: 32px;
-}
-
-.neiro-inside-section .post-feed,
-.neiro-inside-feed {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 20px !important;
-    margin: 0 !important;
-}
-
-.neiro-inside-item {
-    border-radius: 14px !important;
-    background: #fff !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07) !important;
-    transition: transform 250ms ease, box-shadow 250ms ease !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex: none !important;
-    min-width: 0 !important;
-    width: auto !important;
-}
-
-.neiro-inside-item:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 12px 36px rgba(0, 77, 64, 0.12) !important;
-}
-
-.neiro-inside-item .post-card-content {
-    padding: 28px 20px 24px;
+.neiro-inside-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 20px;
     text-align: center;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    transition: transform 250ms ease, box-shadow 250ms ease;
 }
-
+.neiro-inside-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,77,64,0.12);
+}
 .neiro-inside-icon {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     line-height: 1;
 }
-
-.neiro-inside-item .post-card-title {
-    color: var(--neiro-teal) !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 8px !important;
-    margin-top: 0 !important;
+.neiro-inside-card h4 {
+    font-size: 0.95rem;
+    color: var(--neiro-teal);
+    margin: 0 0 6px;
+    font-weight: 700;
+}
+.neiro-inside-card p {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 0;
 }
 
-.neiro-inside-item .post-card-excerpt {
-    color: #777 !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-}
-
-/* ================================================================
-   BONUS — Mustard Gold
-   ================================================================ */
-
+/* ----------------------------------------------------------------
+   BONUS
+   ---------------------------------------------------------------- */
 .neiro-bonus {
-    padding: 48px 0;
-    background: #fff;
+    padding: 80px 0 48px;
 }
-
 .neiro-bonus-card {
     background: var(--neiro-gold);
     border-radius: 20px;
@@ -443,111 +387,64 @@ h4 {
     justify-content: space-between;
     gap: 40px;
 }
-
-.neiro-bonus-left {
-    flex: 1;
-}
-
+.neiro-bonus-left { flex: 1; }
 .neiro-bonus-label {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.12);
-    color: #1A1A1A;
+    background: rgba(0,0,0,0.12);
+    color: #1a1a1a;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 5px 14px;
     border-radius: 999px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
+.neiro-bonus-card h2 { color: #1a1a1a !important; font-size: 1.7rem; line-height: 1.3; margin: 0 0 10px; }
+.neiro-bonus-card p  { color: rgba(0,0,0,0.65); font-size: 15px; line-height: 1.7; margin: 0; }
+.neiro-bonus-right { flex-shrink: 0; }
 
-.neiro-bonus-card h2 {
-    color: #1A1A1A !important;
-    font-size: 1.75rem;
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
-
-.neiro-bonus-card p {
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 15px;
-    line-height: 1.7;
-    margin: 0;
-}
-
-.neiro-bonus-right {
-    flex-shrink: 0;
-}
-
-/* ================================================================
+/* ----------------------------------------------------------------
    SOCIAL PROOF
-   ================================================================ */
-
+   ---------------------------------------------------------------- */
 .neiro-social-proof {
-    padding: 64px 0;
-    background: var(--neiro-sand);
+    padding: 48px 0 64px;
 }
-
 .neiro-quote-card {
-    background: #fff;
+    background: var(--neiro-sand);
     border-radius: 20px;
     padding: 48px 56px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 77, 64, 0.08);
     border-left: 5px solid var(--neiro-coral);
 }
-
-.neiro-stars {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
+.neiro-stars { font-size: 1.3rem; margin-bottom: 18px; letter-spacing: 2px; }
 .neiro-quote-card blockquote {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.8;
     color: #333;
     font-style: italic;
-    margin: 0 0 20px;
+    margin: 0 0 18px;
     quotes: none;
     border: none;
     padding: 0;
 }
+.neiro-quote-card cite { color: var(--neiro-teal); font-size: 15px; font-weight: 600; font-style: normal; }
 
-.neiro-quote-card cite {
-    color: var(--neiro-teal);
-    font-size: 15px;
-    font-weight: 600;
-    font-style: normal;
-}
-
-/* ================================================================
+/* ----------------------------------------------------------------
    FAQ
-   ================================================================ */
-
-.neiro-faq {
-    padding: 64px 0;
-    background: #fff;
-}
-
-.neiro-faq .neiro-section-title {
-    margin-bottom: 36px;
-}
-
+   ---------------------------------------------------------------- */
+.neiro-faq { padding: 48px 0 72px; }
+.neiro-faq .neiro-section-title { margin-bottom: 32px; }
 .neiro-faq-item {
     border: 2px solid #e5e5e5;
     border-radius: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     overflow: hidden;
-    transition: border-color 200ms ease;
+    transition: border-color 200ms;
 }
-
-.neiro-faq-item[open] {
-    border-color: var(--neiro-teal);
-}
-
+.neiro-faq-item[open] { border-color: var(--neiro-teal); }
 .neiro-faq-item summary {
-    padding: 20px 24px;
+    padding: 18px 22px;
     font-weight: 600;
     font-size: 16px;
     color: var(--neiro-teal);
@@ -558,151 +455,35 @@ h4 {
     align-items: center;
     user-select: none;
 }
-
-.neiro-faq-item summary::-webkit-details-marker {
-    display: none;
-}
-
+.neiro-faq-item summary::-webkit-details-marker { display: none; }
 .neiro-faq-item summary::after {
     content: '+';
     font-size: 1.4rem;
     font-weight: 300;
     color: var(--neiro-coral);
-    flex-shrink: 0;
     margin-left: 16px;
-    transition: transform 200ms ease;
+    flex-shrink: 0;
+    transition: transform 200ms;
 }
+.neiro-faq-item[open] summary::after { transform: rotate(45deg); }
+.neiro-faq-body { padding: 0 22px 18px; border-top: 1px solid #f0f0f0; }
+.neiro-faq-body p { color: #555; font-size: 15px; line-height: 1.75; margin: 14px 0 0; }
+.neiro-faq-cta { text-align: center; margin-top: 36px; }
 
-.neiro-faq-item[open] summary::after {
-    transform: rotate(45deg);
-}
-
-.neiro-faq-body {
-    padding: 0 24px 20px;
-    border-top: 1px solid #f0f0f0;
-}
-
-.neiro-faq-body p {
-    color: #555;
-    font-size: 15px;
-    line-height: 1.75;
-    margin: 16px 0 0;
-}
-
-.neiro-faq-cta {
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* ================================================================
-   FOOTER — Simple Casper style
-   ================================================================ */
-
-.neiro-site-footer {
-    background: #fff;
-}
-
+/* ----------------------------------------------------------------
+   FOOTER
+   ---------------------------------------------------------------- */
+.neiro-site-footer { background: #fff; }
 .neiro-footer-cta {
     background: var(--neiro-teal);
     color: #fff;
     padding: 64px 20px;
     text-align: center;
 }
-
-.neiro-footer-cta h3 {
-    color: #fff !important;
-    font-size: 2rem;
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
-
-.neiro-footer-cta p {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 24px;
-}
-
-.neiro-fine-print {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 20px;
-}
-
-.neiro-fine-print a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: underline;
-}
-
-.neiro-preview-lessons {
-    padding: 40px 20px 28px;
-    text-align: center;
-}
-
-.neiro-preview-lessons h4 {
-    color: var(--neiro-teal);
-    margin-bottom: 16px;
-}
-
-.neiro-preview-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-}
-
-.neiro-preview-card {
-    display: block;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
-    text-decoration: none;
-    color: var(--neiro-teal);
-    transition: transform 200ms ease;
-}
-
-.neiro-preview-card:hover {
-    transform: translateY(-3px);
-}
-
-.neiro-preview-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    display: block;
-}
-
-.neiro-preview-card span {
-    display: block;
-    padding: 10px 12px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.neiro-tag-filter {
-    padding: 16px 20px;
-    text-align: center;
-    border-top: 1px solid #eee;
-}
-
-.neiro-tag-pill {
-    display: inline-block;
-    background: var(--neiro-sand);
-    color: var(--neiro-teal);
-    border: 2px solid var(--neiro-teal);
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    margin: 3px;
-    text-decoration: none;
-    transition: background 180ms ease, color 180ms ease;
-}
-
-.neiro-tag-pill:hover {
-    background: var(--neiro-teal);
-    color: #fff;
-}
-
+.neiro-footer-cta h3 { color: #fff !important; font-size: 2rem; margin: 0 0 10px; line-height: 1.3; }
+.neiro-footer-cta p  { color: rgba(255,255,255,0.8); margin: 0 0 24px; }
+.neiro-fine-print { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 18px; }
+.neiro-fine-print a { color: rgba(255,255,255,0.7); text-decoration: underline; }
 .neiro-footer-copy {
     text-align: center;
     padding: 20px;
@@ -710,67 +491,50 @@ h4 {
     color: #888;
     border-top: 1px solid #eee;
 }
+.neiro-footer-copy a { color: var(--neiro-teal); text-decoration: none; }
 
-.neiro-footer-copy a {
-    color: var(--neiro-teal);
-    text-decoration: none;
+.neiro-preview-lessons { padding: 36px 20px; text-align: center; }
+.neiro-preview-lessons h4 { color: var(--neiro-teal); margin-bottom: 14px; }
+.neiro-preview-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 12px; }
+.neiro-preview-card {
+    display: block; background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-decoration: none; color: var(--neiro-teal);
+    transition: transform 180ms;
 }
+.neiro-preview-card:hover { transform: translateY(-3px); }
+.neiro-preview-card img { width: 100%; height: 100px; object-fit: cover; display: block; }
+.neiro-preview-card span { display: block; padding: 8px 12px; font-size: 13px; font-weight: 600; }
 
-/* ================================================================
+.neiro-tag-filter { padding: 14px 20px; text-align: center; border-top: 1px solid #eee; }
+.neiro-tag-pill {
+    display: inline-block;
+    background: var(--neiro-sand); color: var(--neiro-teal);
+    border: 2px solid var(--neiro-teal);
+    padding: 5px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    margin: 3px; text-decoration: none; transition: background 180ms, color 180ms;
+}
+.neiro-tag-pill:hover { background: var(--neiro-teal); color: #fff; }
+
+/* ----------------------------------------------------------------
    RESPONSIVE
-   ================================================================ */
-
-@media screen and (max-width: 1023px) {
-    .neiro-problem-card {
-        grid-template-columns: 1fr;
-    }
-
-    .neiro-problem-visual {
-        padding: 40px;
-        min-height: 260px;
-    }
-
-    .neiro-problem-text {
-        padding: 36px 28px;
-    }
-
-    .neiro-pillar-feed {
-        grid-template-columns: 1fr !important;
-    }
-
-    .neiro-inside-feed {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    .neiro-bonus-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 36px 24px;
-    }
-
-    .neiro-quote-card {
-        padding: 36px 28px;
-    }
+   ---------------------------------------------------------------- */
+@media (max-width: 1023px) {
+    .neiro-problem-card { grid-template-columns: 1fr; }
+    .neiro-problem-visual { min-height: 240px; padding: 36px 28px; }
+    .neiro-problem-text { padding: 36px 28px; }
+    .neiro-grid-3 { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .neiro-grid-4 { grid-template-columns: 1fr 1fr; }
+    .neiro-bonus-card { flex-direction: column; text-align: center; padding: 36px 24px; }
+    .neiro-quote-card { padding: 36px 28px; }
+    .neiro-academy-section { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
 }
 
-@media screen and (max-width: 767px) {
-    .neiro-section-title {
-        font-size: 1.6rem;
-    }
-
-    .neiro-problem-text h2 {
-        font-size: 1.5rem;
-    }
-
-    .neiro-inside-feed {
-        grid-template-columns: 1fr !important;
-    }
-
-    .neiro-quote-card blockquote {
-        font-size: 1rem;
-    }
-
-    .neiro-footer-cta h3 {
-        font-size: 1.5rem;
-    }
+@media (max-width: 767px) {
+    .neiro-section-title { font-size: 1.6rem; }
+    .neiro-problem-text h2 { font-size: 1.5rem; }
+    .neiro-grid-3 { grid-template-columns: 1fr; }
+    .neiro-grid-4 { grid-template-columns: 1fr 1fr; }
+    .neiro-quote-card blockquote { font-size: 1rem; }
+    .neiro-footer-cta h3 { font-size: 1.5rem; }
+    .neiro-academy-section { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
 }

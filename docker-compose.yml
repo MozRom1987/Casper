@@ -1,0 +1,24 @@
+﻿services:
+  ghost:
+    image: ghost:5-alpine
+    restart: unless-stopped
+    ports:
+      - "2369:2368"
+    environment:
+      # đŤđżđ║đ░đ╗ĐîđŻđ░ ĐÇđżđĚĐÇđżđ▒đ║đ░
+      NODE_ENV: development
+      url: http://localhost:2369
+      # đĺđŞđ╝đ║đŻĐâĐéđŞ email (đŻđÁ đ┐đżĐéĐÇĐľđ▒đÁđŻ đ╗đżđ║đ░đ╗ĐîđŻđż)
+      mail__transport: Stub
+      security__staffDeviceVerification: "false"
+      # đĺđ║đ░đĚĐâĐöđ╝đż ĐÇđżđĚĐéđ░ĐłĐâđ▓đ░đŻđŻĐĆ đ▒đ░đĚđŞ Đâ đĚđ╝đżđŻĐéđżđ▓đ░đŻđżđ╝Đâ volumes, Đëđżđ▒ đ▓đżđŻđ░ đŻđÁ đżĐçđŞĐëđ░đ╗đ░ĐüĐî đ┐ĐÇđŞ đ┐đÁĐÇđÁĐüĐéđ▓đżĐÇđÁđŻđŻĐľ đ║đżđŻĐéđÁđ╣đŻđÁĐÇđ░
+      database__client: sqlite3
+      database__connection__filename: /var/lib/ghost/content/data/ghost-dev.db
+    volumes:
+      # đčđżĐüĐéĐľđ╣đŻđÁ ĐüĐůđżđ▓đŞĐëđÁ Ghost (đ║đżđŻĐéđÁđŻĐé, đ▒đ░đĚđ░ đ┤đ░đŻđŞĐů)
+      - ghost_data:/var/lib/ghost/content
+      # đťđżđŻĐéĐâĐöđ╝đż ĐéđÁđ║Đâ ĐéđÁđ╝đŞ đŻđ░đ┐ĐÇĐĆđ╝Đâ ÔÇö đĚđ╝ĐľđŻđŞ đżđ┤ĐÇđ░đĚĐâ đ▓đŞđ┤đŻđż đ▓ Ghost
+      - .:/var/lib/ghost/content/themes/casper
+
+volumes:
+  ghost_data:

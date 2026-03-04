@@ -27,7 +27,7 @@
     {{!-- Tag & category colors --}}
     <style>
         :root {
-            --epcl-background-color: #54CBCA;
+            --epcl-background-color: #004D40;
             --epcl-content-background-color: #ffffff;
         }
 
@@ -292,11 +292,16 @@
             {{#foreach @site.navigation}}
             <li class="nav-{{slug}}{{#if current}} current-menu-item{{/if}}"><a href="{{url}}">{{label}}</a></li>
             {{/foreach}}
+            <li class="nav-get-access">
+                {{#unless @member}}
+                <a href="/subscribe">Get Access</a>
+                {{/unless}}
+            </li>
             <li class="nav-login">
                 {{#unless @member}}
-                <a href="#/portal/signup" class="login epcl-button dark" data-title="Sign Up">Sign Up</a>
+                <a href="#/portal/signin">Sign In</a>
                 {{else}}
-                <a href="#/portal/account" class="login epcl-button dark" data-title="Account">Account</a>
+                <a href="#/portal/account">My Account</a>
                 {{/unless}}
             </li>
         </ul>
@@ -346,28 +351,20 @@
                                 <li class="nav-{{slug}}{{#if current}} current-menu-item{{/if}}"><a
                                         href="{{url}}">{{label}}</a></li>
                                 {{/foreach}}
+                                <li class="nav-get-access">
+                                    {{#unless @member}}
+                                    <a href="/subscribe">Get Access</a>
+                                    {{/unless}}
+                                </li>
                                 <li class="nav-login">
                                     {{#unless @member}}
-                                    <a href="#/portal/signup" class="login epcl-button dark">Sign Up</a>
+                                    <a href="#/portal/signin">Sign In</a>
                                     {{else}}
-                                    <a href="#/portal/account" class="login epcl-button dark">Account</a>
+                                    <a href="#/portal/account">My Account</a>
                                     {{/unless}}
                                 </li>
                             </ul>
                         </nav>
-
-                        {{!-- Social buttons --}}
-                        {{#if @site.facebook}}
-                        <div class="epcl-social-buttons fill-color hide-on-tablet hide-on-mobile hide-on-desktop-sm">
-                            {{#if @site.facebook}}<a href="https://www.facebook.com/{{@site.facebook}}" class="facebook"
-                                target="_blank" rel="nofollow noopener"><i class="fa fa-facebook"></i></a>{{/if}}
-                            {{#if @site.twitter}}<a href="https://twitter.com/{{@site.twitter}}" class="twitter"
-                                target="_blank" rel="nofollow noopener"><svg>
-                                    <use xlink:href="#twitter-icon"></use>
-                                </svg></a>{{/if}}
-                            <a href="{{@site.url}}/rss/" class="rss" target="_blank"><i class="fa fa-rss"></i></a>
-                        </div>
-                        {{/if}}
 
                         <div class="clear"></div>
                     </div>
@@ -446,24 +443,49 @@
                 </div>
             </div>
 
-            {{!-- Newsletter --}}
-            <div class="epcl-subscribe textcenter bg-box grid-container grid-usmall">
-                <h3 class="title medium">Stay in the loop!</h3>
-                <h4 class="title large">Subscribe to our Newsletter</h4>
-                <form class="subscribe-form" data-members-form="subscribe">
-                    <div class="form-group">
-                        <input type="email" name="email" class="inputbox rounded large" required
-                            placeholder="Enter your email address" data-members-email />
-                        <button type="submit" class="submit absolute epcl-button">
-                            Subscribe <svg class="icon">
-                                <use xlink:href="#send-email"></use>
-                            </svg>
-                        </button>
-                    </div>
-                    <p class="success-message"><i class="fa fa-check"></i> You're subscribed!</p>
-                    <p class="error-detail"></p>
-                </form>
+            {{!-- NeiroBook: Final CTA --}}
+            <div class="neiro-footer-cta">
+                <div class="grid-container grid-usmall" style="text-align:center;">
+                    <h3>Ready to Replace Screen Time with Something Better?</h3>
+                    <p style="color:rgba(255,255,255,0.8);margin-bottom:28px;">117+ activities. Zero prep. Start today.
+                    </p>
+                    <a href="/subscribe" class="neiro-btn-coral" style="font-size:18px;padding:16px 44px;">Get Instant
+                        Access →</a>
+                    <p class="neiro-fine-print">
+                        All sales are final. &nbsp;·&nbsp;
+                        <a href="/terms">Terms</a> &nbsp;·&nbsp;
+                        <a href="/privacy">Privacy</a>
+                    </p>
+                </div>
             </div>
+
+            {{!-- NeiroBook: Free Preview Lessons --}}
+            {{#get "posts" filter="tag:preview" limit="3"}}
+            {{#if posts}}
+            <div class="neiro-preview-lessons grid-container grid-usmall">
+                <h4 style="text-align:center;color:var(--neiro-teal);margin-bottom:20px;">Try a Free Lesson 👇</h4>
+                <div class="neiro-preview-grid">
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="neiro-preview-card">
+                        {{#if feature_image}}<img src="{{img_url feature_image size=" s"}}" alt="{{title}}">{{/if}}
+                        <span>{{title}}</span>
+                    </a>
+                    {{/foreach}}
+                </div>
+            </div>
+            {{/if}}
+            {{/get}}
+
+            {{!-- NeiroBook: Category Tag Pills --}}
+            {{#get "tags" filter="slug:[motor,cognitive,breathing,stretches]" limit="all"}}
+            {{#if tags}}
+            <div class="neiro-tag-filter grid-container grid-usmall" style="text-align:center;padding:24px 20px;">
+                {{#foreach tags}}
+                <a href="{{url}}" class="neiro-tag-pill">{{name}}</a>
+                {{/foreach}}
+            </div>
+            {{/if}}
+            {{/get}}
 
             {{!-- Copyright --}}
             <div class="published textcenter" style="padding: 20px 0;">

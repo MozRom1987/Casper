@@ -9,7 +9,11 @@ services:
       NODE_ENV: development
       url: http://localhost:2369
       # Вимкнути email (не потрібен локально)
-      mail__transport: Direct
+      mail__transport: Stub
+      security__staffDeviceVerification: "false"
+      # Вказуємо розташування бази у змонтованому volumes, щоб вона не очищалась при перестворенні контейнера
+      database__client: sqlite3
+      database__connection__filename: /var/lib/ghost/content/data/ghost-dev.db
     volumes:
       # Постійне сховище Ghost (контент, база даних)
       - ghost_data:/var/lib/ghost/content

@@ -30,6 +30,12 @@ h4 {
     color: var(--neiro-teal);
 }
 
+/* Site title in cover hero area must be white (like demo.ghost.io) */
+.site-header-content .site-title,
+.site-header-content .site-description {
+    color: #fff !important;
+}
+
 /* ----------------------------------------------------------------
    NAVBAR — minimal overrides, no forced background
    Keep Casper default white header, just style buttons
